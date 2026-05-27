@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research | Debjyoti Saharoy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #3b82f6;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body class="font-['Inter'] bg-zinc-50 text-zinc-800">
+
+    <!-- Navbar will be loaded here -->
+    <div id="navbar"></div>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-6 py-16">
+        <h1 class="text-5xl font-bold tracking-tight mb-4">Research</h1>
+        <p class="text-xl text-zinc-600 max-w-3xl">
+            My research focuses on Natural Language Processing, Large Language Models, and efficient AI systems.
+        </p>
+
+        <div class="mt-16">
+            <h2 class="text-3xl font-semibold mb-8 border-b pb-4">Selected Publications & Preprints</h2>
+
+            <!-- Publication Cards will go here -->
+            <div class="space-y-8">
+                <!-- Example Publication -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-zinc-100 hover:shadow-md transition">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-semibold">Paper Title Goes Here</h3>
+                            <p class="text-zinc-600 mt-2">Authors • Conference/Journal • Year</p>
+                        </div>
+                        <span
+                            class="px-4 py-1.5 bg-blue-100 text-blue-700 text-sm font-medium rounded-full">Preprint</span>
+                    </div>
+                    <p class="mt-4 text-zinc-600 line-clamp-3">
+                        Short description of the paper...
+                    </p>
+                    <div class="mt-6 flex gap-4">
+                        <a href="#" class="text-blue-600 hover:underline">📄 PDF</a>
+                        <a href="#" class="text-blue-600 hover:underline">🔗 arXiv</a>
+                        <a href="#" class="text-blue-600 hover:underline">💻 Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer"></div>
+
+    <script>
+        // Load Navbar
+        fetch('components/navbar.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('navbar').innerHTML = data);
+
+        // Load Footer
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</body>
+
+</html>

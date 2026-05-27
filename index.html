@@ -34,23 +34,7 @@
 <body class="font-['Inter'] bg-zinc-50 text-zinc-800">
 
     <!-- Navbar -->
-    <nav class="bg-white border-b border-zinc-200 sticky top-0 z-50 shadow-sm">
-        <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
-            <!-- <div class="text-2xl font-bold tracking-tight">Debjyoti Saha Roy</div> -->
-            <div class="text-2xl font-bold tracking-tight">
-                Debjyoti Saha Roy
-                <span class="text-xl font-medium text-zinc-400">• দেবজ্যোতি সাহা রায়</span>
-            </div>
-            <div class="flex gap-8 text-sm font-medium">
-                <a href="index.html" class="nav-link text-blue-600">Home</a>
-                <a href="#" class="nav-link">About</a>
-                <a href="#" class="nav-link">Research</a>
-                <!-- <a href="#" class="nav-link">Publications</a> -->
-                <!-- <a href="#" class="nav-link">Teaching</a> -->
-                <a href="#" class="nav-link">CV</a>
-            </div>
-        </div>
-    </nav>
+    <div id="navbar"></div>
 
     <!-- Hero Section -->
     <section class="hero-bg h-screen flex items-center text-white">
@@ -103,59 +87,30 @@
     <script src="assets/js/main.js"></script>
 
     <!-- Footer -->
-    <footer class="bg-zinc-900 text-zinc-400 py-12 mt-20">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div id="footer"></div>
 
-                <!-- Left Column -->
-                <div>
-                    <div class="text-white text-2xl font-bold tracking-tight mb-4">Debjyoti Saharoy</div>
-                    <p class="text-sm">PhD Candidate in Natural Language Processing</p>
-                    <p class="text-sm mt-1">[Your University / Department]</p>
-                </div>
+    <script>
+        // Load Navbar with better error handling
+        fetch('components/navbar.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Navbar not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error loading navbar:', error);
+                document.getElementById('navbar').innerHTML = '<nav class="bg-white p-4 text-red-500">Error loading navigation</nav>';
+            });
 
-                <!-- Middle Column - Quick Links -->
-                <div>
-                    <h3 class="text-white font-semibold mb-4">Quick Links</h3>
-                    <div class="grid grid-cols-2 gap-2 text-sm">
-                        <a href="index.html" class="hover:text-white transition">Home</a>
-                        <a href="#" class="hover:text-white transition">About</a>
-                        <a href="#" class="hover:text-white transition">Research</a>
-                        <a href="#" class="hover:text-white transition">Publications</a>
-                        <a href="#" class="hover:text-white transition">Teaching</a>
-                        <a href="#" class="hover:text-white transition">CV</a>
-                    </div>
-                </div>
-
-                <!-- Right Column - Connect -->
-                <div>
-                    <h3 class="text-white font-semibold mb-4">Connect</h3>
-                    <div class="flex gap-5 text-2xl mb-6">
-                        <a href="https://github.com/yourusername" target="_blank"
-                            class="hover:text-blue-400 transition"><i class="fab fa-github"></i></a>
-                        <a href="https://scholar.google.com/citations?user=YOUR-ID" target="_blank"
-                            class="hover:text-blue-400 transition"><i class="fas fa-graduation-cap"></i></a>
-                        <a href="https://linkedin.com/in/yourprofile" target="_blank"
-                            class="hover:text-blue-400 transition"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://x.com/debjyotisaharoy" target="_blank"
-                            class="hover:text-blue-400 transition"><i class="fab fa-x-twitter"></i></a>
-                    </div>
-
-                    <p class="text-sm">
-                        <a href="mailto:your.email@university.edu" class="hover:text-white transition">
-                            your.email@university.edu
-                        </a>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Bottom Bar -->
-            <div class="border-t border-zinc-800 mt-12 pt-8 text-center text-xs">
-                <p>© 2026 Debjyoti Saharoy. All Rights Reserved.</p>
-                <p class="mt-1">Last updated: May 2026</p>
-            </div>
-        </div>
-    </footer>
+        // Load Footer
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+    </script>
 
 </body>
 
