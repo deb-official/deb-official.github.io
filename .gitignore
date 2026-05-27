@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Mac OS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Temporary files
+*.log
+Thumbs.db
+
+# Environment variables (if any later)
+.env

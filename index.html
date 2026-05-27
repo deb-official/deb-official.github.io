@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debjyoti Saharoy | Academic Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url('assets/images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* Nice parallax effect */
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #3b82f6;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body class="font-['Inter'] bg-zinc-50 text-zinc-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white border-b border-zinc-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-tight">Debjyoti Saha Roy</div>
+            <div class="flex gap-8 text-sm font-medium">
+                <a href="index.html" class="nav-link text-blue-600">Home</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Research</a>
+                <!-- <a href="#" class="nav-link">Publications</a> -->
+                <!-- <a href="#" class="nav-link">Teaching</a> -->
+                <a href="#" class="nav-link">CV</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg h-screen flex items-center text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <img src="assets/images/profile.jpg" alt="Debjyoti Saha Roy"
+                class="w-48 h-48 rounded-full mx-auto mb-8 border-4 border-white shadow-2xl object-cover object-[50%_20%]">
+            <h1 class="text-6xl font-bold mb-4 tracking-tighter">Debjyoti Saha Roy</h1>
+            <p class="text-2xl mb-6 text-zinc-200 whitespace-nowrap">
+                PhD Candidate •
+                <a href="https://www.khoury.northeastern.edu" target="_blank"
+                    class="hover:text-white hover:underline transition-colors">
+                    Khoury College of Computer Sciences
+                </a> •
+                <a href="https://www.northeastern.edu" target="_blank"
+                    class="hover:text-white hover:underline transition-colors">
+                    Northeastern University
+                </a>
+            </p>
+            <p class="text-xl max-w-2xl mx-auto text-zinc-300 mb-10">
+                Advancing [Your Research Field] through innovative methodologies and interdisciplinary approaches.
+            </p>
+            <!-- Main Action Buttons -->
+            <div class="flex gap-4 justify-center mb-12">
+                <a href="#" class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-full font-medium text-lg transition">
+                    Explore Research
+                </a>
+                <a href="#"
+                    class="border border-white hover:bg-white hover:text-zinc-900 px-8 py-4 rounded-full font-medium text-lg transition">
+                    Download CV
+                </a>
+            </div>
+            <!-- Social & Academic Links -->
+            <div class="flex justify-center gap-6 text-3xl">
+                <a href="https://github.com/yourusername" target="_blank" class="hover:text-blue-400 transition"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://scholar.google.com/citations?user=YOUR-ID" target="_blank"
+                    class="hover:text-blue-400 transition"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="hover:text-blue-400 transition"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/debjyotisaharoy" target="_blank" class="hover:text-blue-400 transition"><i
+                        class="fab fa-x-twitter"></i></a>
+                <a href="https://bsky.app/profile/yourhandle" target="_blank" class="hover:text-blue-400 transition"><i
+                        class="fab fa-bluesky"></i></a>
+                <a href="https://instagram.com/yourusername" target="_blank" class="hover:text-blue-400 transition"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/js/main.js"></script>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-900 text-zinc-400 py-12 mt-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+                <!-- Left Column -->
+                <div>
+                    <div class="text-white text-2xl font-bold tracking-tight mb-4">Debjyoti Saharoy</div>
+                    <p class="text-sm">PhD Candidate in Natural Language Processing</p>
+                    <p class="text-sm mt-1">[Your University / Department]</p>
+                </div>
+
+                <!-- Middle Column - Quick Links -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+                    <div class="grid grid-cols-2 gap-2 text-sm">
+                        <a href="index.html" class="hover:text-white transition">Home</a>
+                        <a href="#" class="hover:text-white transition">About</a>
+                        <a href="#" class="hover:text-white transition">Research</a>
+                        <a href="#" class="hover:text-white transition">Publications</a>
+                        <a href="#" class="hover:text-white transition">Teaching</a>
+                        <a href="#" class="hover:text-white transition">CV</a>
+                    </div>
+                </div>
+
+                <!-- Right Column - Connect -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Connect</h3>
+                    <div class="flex gap-5 text-2xl mb-6">
+                        <a href="https://github.com/yourusername" target="_blank"
+                            class="hover:text-blue-400 transition"><i class="fab fa-github"></i></a>
+                        <a href="https://scholar.google.com/citations?user=YOUR-ID" target="_blank"
+                            class="hover:text-blue-400 transition"><i class="fas fa-graduation-cap"></i></a>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank"
+                            class="hover:text-blue-400 transition"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://x.com/debjyotisaharoy" target="_blank"
+                            class="hover:text-blue-400 transition"><i class="fab fa-x-twitter"></i></a>
+                    </div>
+
+                    <p class="text-sm">
+                        <a href="mailto:your.email@university.edu" class="hover:text-white transition">
+                            your.email@university.edu
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-zinc-800 mt-12 pt-8 text-center text-xs">
+                <p>© 2026 Debjyoti Saharoy. All Rights Reserved.</p>
+                <p class="mt-1">Last updated: May 2026</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
