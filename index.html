@@ -28,10 +28,16 @@
             color: #3b82f6;
             transform: translateY(-2px);
         }
+
+        /* Active link styling */
+        .nav-home {
+            color: #3b82f6;
+            font-weight: 600;
+        }
     </style>
 </head>
 
-<body class="font-['Inter'] bg-zinc-50 text-zinc-800">
+<body class="font-['Inter'] bg-zinc-50 text-zinc-800 home-page">
 
     <!-- Navbar -->
     <div id="navbar"></div>
@@ -90,19 +96,13 @@
     <div id="footer"></div>
 
     <script>
-        // Load Navbar with better error handling
+        // Load Navbar
         fetch('components/navbar.html')
-            .then(response => {
-                if (!response.ok) throw new Error('Navbar not found');
-                return response.text();
-            })
+            .then(response => response.text())
             .then(data => {
                 document.getElementById('navbar').innerHTML = data;
             })
-            .catch(error => {
-                console.error('Error loading navbar:', error);
-                document.getElementById('navbar').innerHTML = '<nav class="bg-white p-4 text-red-500">Error loading navigation</nav>';
-            });
+            .catch(err => console.error('Navbar load error:', err));
 
         // Load Footer
         fetch('components/footer.html')

@@ -20,10 +20,16 @@
             color: #3b82f6;
             transform: translateY(-2px);
         }
+
+        /* Active link styling */
+        .nav-research {
+            color: #3b82f6;
+            font-weight: 600;
+        }
     </style>
 </head>
 
-<body class="font-['Inter'] bg-zinc-50 text-zinc-800">
+<body class="font-['Inter'] bg-zinc-50 text-zinc-800 research-page">
 
     <!-- Navbar will be loaded here -->
     <div id="navbar"></div>
@@ -31,17 +37,46 @@
     <!-- Main Content -->
     <main class="max-w-6xl mx-auto px-6 py-16">
         <h1 class="text-5xl font-bold tracking-tight mb-4">Research</h1>
-        <p class="text-xl text-zinc-600 max-w-3xl">
-            My research focuses on Natural Language Processing, Large Language Models, and efficient AI systems.
+        <p class="text-xl text-zinc-600 max-w-3xl mb-5">
+            My research lies at the intersection of Natural Language Processing, Large Language Models, and efficient AI
+            systems.
         </p>
 
-        <div class="mt-16">
+        <!-- Research Keywords -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <!-- Box 1 -->
+            <div class="bg-white border border-zinc-200 rounded-xl p-4 hover:border-zinc-400 transition-colors">
+                <div class="text-base font-semibold text-zinc-900">Natural Language Processing</div>
+            </div>
+
+            <!-- Box 2 -->
+            <div class="bg-white border border-zinc-200 rounded-xl p-4 hover:border-zinc-400 transition-colors">
+                <div class="text-base font-semibold text-zinc-900">Large Language Models</div>
+            </div>
+
+            <!-- Box 3 -->
+            <div class="bg-white border border-zinc-200 rounded-xl p-4 hover:border-zinc-400 transition-colors">
+                <div class="text-base font-semibold text-zinc-900">Efficient AI Systems</div>
+            </div>
+
+            <!-- Box 4 -->
+            <div class="bg-white border border-zinc-200 rounded-xl p-4 hover:border-zinc-400 transition-colors">
+                <div class="text-base font-semibold text-zinc-900">Model Optimization</div>
+            </div>
+        </div>
+
+        <!-- Publications & Preprints -->
+        <div class="mt-12">
             <h2 class="text-3xl font-semibold mb-8 border-b pb-4">Selected Publications & Preprints</h2>
 
             <!-- Publication Cards will go here -->
             <div class="space-y-8">
                 <!-- Example Publication -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-zinc-100 hover:shadow-md transition">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-zinc-200 
+             hover:shadow-[0_20px_40px_-10px_rgb(59,130,246,0.25)] 
+             hover:-translate-y-1 hover:border-blue-300
+             transition-all duration-300 ease-out">
+
                     <div class="flex justify-between items-start">
                         <div>
                             <h3 class="text-xl font-semibold">Paper Title Goes Here</h3>
@@ -50,15 +85,20 @@
                         <span
                             class="px-4 py-1.5 bg-blue-100 text-blue-700 text-sm font-medium rounded-full">Preprint</span>
                     </div>
+
                     <p class="mt-4 text-zinc-600 line-clamp-3">
                         Short description of the paper...
                     </p>
+
                     <div class="mt-6 flex gap-4">
-                        <a href="#" class="text-blue-600 hover:underline">📄 PDF</a>
-                        <a href="#" class="text-blue-600 hover:underline">🔗 arXiv</a>
+                        <!-- <a href="#" class="text-blue-600 hover:underline">📄 PDF</a> -->
+                        <a href="https://arxiv.org/pdf/2410.23066.pdf" target="_blank" rel="noopener noreferrer"
+                            download="2410.23066.pdf" class="text-blue-600 hover:underline">🔗 arXiv</a>
                         <a href="#" class="text-blue-600 hover:underline">💻 Code</a>
+                        <a href="#" class="text-blue-600 hover:underline">📊 Slides</a>
                     </div>
                 </div>
+                <!-- More publications can be added in the same format -->
             </div>
         </div>
     </main>
@@ -70,12 +110,16 @@
         // Load Navbar
         fetch('components/navbar.html')
             .then(response => response.text())
-            .then(data => document.getElementById('navbar').innerHTML = data);
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+            })
+            .catch(err => console.error('Navbar load error:', err));
 
         // Load Footer
         fetch('components/footer.html')
             .then(response => response.text())
-            .then(data => document.getElementById('footer').innerHTML = data);
+            .then(data => document.getElementById('footer').innerHTML = data)
+            .catch(err => console.error('Footer load error:', err));
     </script>
 </body>
 
