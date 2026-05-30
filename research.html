@@ -117,8 +117,27 @@
         });
 
         // Abstract Modal Functions
+        let currentTimeout = null;
+
+        function typeWriter(text, element, speed = 22) {
+            element.innerHTML = '';
+            let i = 0;
+
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    currentTimeout = setTimeout(type, speed);
+                }
+            }
+
+            type();
+        }
+
         function showAbstractModal() {
             const modal = document.getElementById('abstractModal');
+            const abstractElement = document.getElementById('abstractText');
+
             modal.classList.remove('hidden');
             modal.style.opacity = '0';
 
@@ -127,6 +146,13 @@
                 modal.style.transition = 'opacity 300ms ease-out';
                 modal.style.opacity = '1';
             }, 10);
+
+            // Your actual abstract text
+            const abstract = `Paste your full abstract text here. This will be typed out character by character with a beautiful typewriter effect.`;
+
+            // Clear any existing animation and start new one
+            if (currentTimeout) clearTimeout(currentTimeout);
+            typeWriter(abstract, abstractElement, 20);   // Adjust speed (lower = faster)
         }
 
         function closeAbstractModal() {
@@ -135,6 +161,8 @@
 
             setTimeout(() => {
                 modal.classList.add('hidden');
+                if (currentTimeout) clearTimeout(currentTimeout);
+                document.getElementById('abstractText').innerHTML = '';
             }, 300);
         }
 
