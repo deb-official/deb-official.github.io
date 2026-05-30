@@ -42,9 +42,56 @@
     </p>
 
     <div class="mt-6 flex gap-4">
+        <a href="#" onclick="showAbstractModal()" class="text-blue-600 hover:underline flex items-center gap-1">
+            📝 Abstract
+        </a>
         <a href="https://arxiv.org/pdf/2410.23066.pdf" target="_blank" rel="noopener noreferrer"
             download="2410.23066.pdf" class="text-blue-600 hover:underline">🔗 arXiv</a>
         <a href="#" class="text-blue-600 hover:underline">💻 Code</a>
         <a href="#" class="text-blue-600 hover:underline">📊 Slides</a>
+    </div>
+</div>
+
+<!-- Abstract Modal -->
+<!-- Premium Abstract Modal -->
+<div id="abstractModal"
+    class="hidden fixed inset-0 bg-black/70 backdrop-blur-xl flex items-center justify-center z-50 transition-opacity duration-300">
+    <!-- <div class="bg-white max-w-2xl w-full mx-4 rounded-3xl shadow-[0_0_80px_-10px_rgb(59,130,246,0.4),0_30px_70px_-20px_rgb(0,0,0,0.25)] 
+                overflow-hidden border border-white/60"> -->
+    <div class="bg-white max-w-2xl w-full mx-4 rounded-3xl 
+            shadow-[0_0_80px_-10px_rgb(59,130,246,0.4),0_30px_70px_-20px_rgb(0,0,0,0.25)]
+            hover:shadow-[0_0_135px_15px_rgb(59,130,246,0.65),0_40px_90px_-20px_rgb(0,0,0,0.35)]
+            hover:ring-4 hover:ring-blue-400/30
+            overflow-hidden
+            border border-white/60
+            transition-all duration-300 ease-out">
+
+        <!-- Modal Header -->
+        <div
+            class="px-8 py-6 border-b border-zinc-100 flex items-center justify-between bg-gradient-to-r from-zinc-50 to-white">
+            <h2 class="text-2xl font-semibold text-zinc-900 flex items-center gap-3">
+                📝 Abstract
+            </h2>
+            <button onclick="closeAbstractModal()"
+                class="w-10 h-10 flex items-center justify-center text-3xl text-zinc-400 hover:text-zinc-600 hover:rotate-90 transition-all duration-300">
+                ×
+            </button>
+        </div>
+
+        <!-- Abstract Content -->
+        <div class="p-9 max-h-[68vh] overflow-y-auto text-zinc-700 leading-relaxed text-[15.8px]">
+            <p id="abstractText" class="text-balance">
+                <!-- Paste your full abstract here -->
+                Your abstract text will go here...
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="px-8 py-6 bg-zinc-50 border-t border-zinc-100 flex justify-end">
+            <button onclick="closeAbstractModal()"
+                class="px-8 py-3 bg-white border border-zinc-300 text-zinc-700 hover:bg-zinc-900 hover:text-white hover:border-zinc-900 rounded-2xl font-medium transition-all active:scale-95">
+                Close
+            </button>
+        </div>
     </div>
 </div>

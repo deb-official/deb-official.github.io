@@ -115,6 +115,33 @@
                 })
                 .catch(err => console.error('Error loading', file, err));
         });
+
+        // Abstract Modal Functions
+        function showAbstractModal() {
+            const modal = document.getElementById('abstractModal');
+            modal.classList.remove('hidden');
+            modal.style.opacity = '0';
+
+            // Trigger smooth fade-in
+            setTimeout(() => {
+                modal.style.transition = 'opacity 300ms ease-out';
+                modal.style.opacity = '1';
+            }, 10);
+        }
+
+        function closeAbstractModal() {
+            const modal = document.getElementById('abstractModal');
+            modal.style.opacity = '0';
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Close when clicking backdrop
+        document.getElementById('abstractModal').addEventListener('click', function (e) {
+            if (e.target === this) closeAbstractModal();
+        });
     </script>
 </body>
 
