@@ -26,6 +26,30 @@
             color: #3b82f6;
             font-weight: 600;
         }
+
+        #abstractText.typing::after {
+            content: '';
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: #1D9E75;
+            vertical-align: -0.15em;
+            margin-left: 2px;
+            border-radius: 1px;
+            animation: blink 0.8s step-end infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
@@ -121,6 +145,8 @@
 
         function typeWriter(text, element, speed = 22) {
             element.innerHTML = '';
+            element.classList.remove('text-balance');
+            element.classList.add('typing'); // show cursor immediately
             let i = 0;
 
             function type() {
@@ -128,6 +154,11 @@
                     element.innerHTML += text.charAt(i);
                     i++;
                     currentTimeout = setTimeout(type, speed);
+                } else {
+                    // Typing done — wait 2s then fade cursor out
+                    setTimeout(() => {
+                        element.classList.remove('typing');
+                    }, 2000);
                 }
             }
 
@@ -162,7 +193,9 @@
             setTimeout(() => {
                 modal.classList.add('hidden');
                 if (currentTimeout) clearTimeout(currentTimeout);
-                document.getElementById('abstractText').innerHTML = '';
+                const el = document.getElementById('abstractText');
+                el.innerHTML = '';
+                el.classList.remove('typing'); // clean up cursor class
             }, 300);
         }
 
