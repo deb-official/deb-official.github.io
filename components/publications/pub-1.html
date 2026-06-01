@@ -42,7 +42,6 @@
     </p>
 
     <div class="mt-6 flex gap-4">
-        <!-- After -->
         <a href="#" onclick="showAbstractModal(this.dataset.abstract)"
             data-abstract="Paste your full abstract text here. This will be typed out character by character with a beautiful typewriter effect."
             class="text-blue-600 hover:underline flex items-center gap-1">
@@ -50,6 +49,15 @@
         </a>
         <a href="https://arxiv.org/pdf/2410.23066.pdf" target="_blank" rel="noopener noreferrer"
             download="2410.23066.pdf" class="text-blue-600 hover:underline">🔗 arXiv</a>
+        <!-- Citation Button -->
+        <a href="#" onclick="showCitationModal(this.dataset.citation)" data-citation="@article{roy2024don,
+        title={Don't Pay Attention, PLANT It: Pretraining Attention via Learning-to-Rank},
+        author={Roy, Debjyoti Saha and Wallace, Byron C and Aslam, Javed A},
+        journal={arXiv preprint arXiv:2410.23066},
+        year={2024}
+        }" class="text-blue-600 hover:underline flex items-center gap-1">
+            📋 Citation
+        </a>
         <a href="#" class="text-blue-600 hover:underline">💻 Code</a>
         <a href="#" class="text-blue-600 hover:underline">📊 Slides</a>
     </div>

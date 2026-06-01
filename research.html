@@ -146,6 +146,46 @@
         </div>
     </div>
 
+    <!-- Citation Modal -->
+    <div id="citationModal"
+        class="hidden fixed inset-0 bg-black/70 backdrop-blur-xl flex items-center justify-center z-50 transition-opacity duration-300">
+        <div class="bg-white max-w-lg w-full mx-4 rounded-3xl shadow-[0_0_80px_-10px_rgb(59,130,246,0.4),0_30px_70px_-20px_rgb(0,0,0,0.25)] 
+                overflow-hidden border border-white/60 transition-all duration-500">
+
+            <!-- Header -->
+            <div
+                class="px-8 py-6 border-b border-zinc-100 flex items-center justify-between bg-gradient-to-r from-zinc-50 to-white">
+                <h2 class="text-2xl font-semibold text-zinc-900">
+                    <i class="fa-solid fa-quote-left text-zinc-500"></i>
+                    Citation
+                </h2>
+                <button onclick="closeCitationModal()"
+                    class="w-10 h-10 flex items-center justify-center text-3xl text-zinc-400 hover:text-zinc-600 hover:rotate-90 transition-all">
+                    ×
+                </button>
+            </div>
+
+            <!-- Content -->
+            <div class="p-8">
+                <div id="citationText"
+                    class="bg-zinc-50 border border-zinc-200 rounded-2xl p-5 font-mono text-sm text-zinc-800  overflow-x-auto whitespace-pre leading-relaxed overflow-y-auto max-h-[60vh]">
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="px-8 py-6 bg-zinc-50 border-t border-zinc-100 flex justify-end gap-3">
+                <button onclick="copyCitation()"
+                    class="px-6 py-3 bg-blue-400 hover:bg-blue-700 text-white rounded-2xl font-medium transition-all active:scale-95">
+                    <i class="fa-solid fa-copy"></i> Copy BibTeX
+                </button>
+                <button onclick="closeCitationModal()"
+                    class="px-6 py-3 bg-white border border-zinc-300 text-zinc-700 hover:bg-zinc-900 hover:text-white hover:border-zinc-900 rounded-2xl font-medium transition-all">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Load Navbar
         fetch('components/navbar.html')
@@ -239,6 +279,48 @@
         document.getElementById('abstractModal').addEventListener('click', function (e) {
             if (e.target === this) closeAbstractModal();
         });
+
+        // === Citation Modal Functions ===
+        let currentCitation = '';
+
+        function showCitationModal(citation) {
+            currentCitation = citation;
+            const modal = document.getElementById('citationModal');
+            const citationElement = document.getElementById('citationText');
+
+            citationElement.textContent = citation;   // Using textContent to preserve formatting
+
+            modal.classList.remove('hidden');
+            modal.style.opacity = '0';
+
+            setTimeout(() => {
+                modal.style.transition = 'opacity 300ms ease-out';
+                modal.style.opacity = '1';
+            }, 10);
+        }
+
+        function closeCitationModal() {
+            const modal = document.getElementById('citationModal');
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function copyCitation() {
+            if (!currentCitation) return;
+
+            navigator.clipboard.writeText(currentCitation).then(() => {
+                const btn = event.currentTarget;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✅ Copied!';
+
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                }, 2000);
+            });
+        }
+
     </script>
 </body>
 
