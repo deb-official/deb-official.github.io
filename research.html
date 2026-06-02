@@ -190,9 +190,9 @@
     <div id="diagramModal"
         class="hidden fixed inset-0 bg-black/80 backdrop-blur-2xl flex items-center justify-center z-50 transition-opacity duration-300">
         <div class="bg-white w-full max-w-7xl mx-4 rounded-3xl shadow-[0_0_100px_-10px_rgb(59,130,246,0.5),0_40px_90px_-20px_rgb(0,0,0,0.35)]
-                hover:shadow-[0_0_150px_20px_rgb(59,130,246,0.75),0_50px_120px_-20px_rgb(0,0,0,0.45)]
-                hover:ring-4 hover:ring-blue-500/40 
-            overflow-hidden border border-white/60 transition-all duration-500 max-h-[92vh] flex flex-col">
+            hover:shadow-[0_0_150px_20px_rgb(59,130,246,0.75),0_50px_120px_-20px_rgb(0,0,0,0.45)]
+            hover:ring-4 hover:ring-blue-500/40
+        overflow-hidden border border-white/60 transition-all duration-500 max-h-[92vh] flex flex-col">
 
             <!-- Header -->
             <div
@@ -201,18 +201,41 @@
                     <i class="fa-solid fa-diagram-project text-blue-500"></i>
                     Diagram
                 </h2>
-                <button onclick="closeDiagramModal()"
-                    class="w-10 h-10 flex items-center justify-center text-3xl text-zinc-400 hover:text-zinc-600 hover:rotate-90 transition-all duration-300">
-                    ×
-                </button>
+                <div class="flex items-center gap-4">
+                    <!-- Slide counter — only shown when multiple images -->
+                    <span id="diagramCounter" class="text-sm text-zinc-400 font-medium hidden"></span>
+                    <button onclick="closeDiagramModal()"
+                        class="w-10 h-10 flex items-center justify-center text-3xl text-zinc-400 hover:text-zinc-600 hover:rotate-90 transition-all duration-300">
+                        ×
+                    </button>
+                </div>
             </div>
 
             <!-- Diagram Container -->
-            <div class="p-6 bg-zinc-50 flex flex-col items-center overflow-auto">
+            <div class="p-6 bg-zinc-50 flex flex-col items-center overflow-auto relative">
                 <div
-                    class="w-full flex items-center justify-center bg-white rounded-2xl p-4 shadow-inner border border-zinc-100">
+                    class="w-full flex items-center justify-center bg-white rounded-2xl p-4 shadow-inner border border-zinc-100 relative">
+
+                    <!-- Prev button -->
+                    <button id="diagramPrev" onclick="stepDiagram(-1)" class="hidden absolute left-3 top-1/2 -translate-y-1/2 z-10
+                           w-10 h-10 flex items-center justify-center
+                           bg-white border border-zinc-200 rounded-full shadow
+                           text-zinc-500 hover:text-zinc-900 hover:border-zinc-400
+                           transition-all active:scale-95">
+                        ‹
+                    </button>
+
                     <iframe id="diagramImage" src="" class="w-full h-full rounded-xl border-0 transition-all"
                         style="height: clamp(300px, 30vh, 800px);" title="Paper Diagram"></iframe>
+
+                    <!-- Next button -->
+                    <button id="diagramNext" onclick="stepDiagram(1)" class="hidden absolute right-3 top-1/2 -translate-y-1/2 z-10
+                           w-10 h-10 flex items-center justify-center
+                           bg-white border border-zinc-200 rounded-full shadow
+                           text-zinc-500 hover:text-zinc-900 hover:border-zinc-400
+                           transition-all active:scale-95">
+                        ›
+                    </button>
                 </div>
 
                 <!-- Caption -->
@@ -366,28 +389,23 @@
             });
         }
 
-        // Diagram Modal Functions
-        function showDiagramModal(imageSrc, caption, title = "Diagram") {
-            const modal = document.getElementById('diagramModal');
-            const embedEl = document.getElementById('diagramImage');
-            const captionEl = document.getElementById('diagramCaption');
-            const titleEl = document.getElementById('diagramTitle');
+        // Diagram Modal — multi-image support
+        // slides: array of { src, caption, title } OR a single { src, caption, title }
+        let _diagSlides = [];
+        let _diagIdx = 0;
 
-            const isPDF = imageSrc.toLowerCase().endsWith('.pdf');
-
-            if (isPDF) {
-                embedEl.tagName === 'IFRAME'
-                    ? (embedEl.src = imageSrc)
-                    : embedEl.setAttribute('src', imageSrc);
-                // Append #view=FitH so the PDF fits width on load
-                embedEl.src = imageSrc + '#view=FitH&toolbar=0';
+        function showDiagramModal(slides, _unused, _unused2) {
+            // Normalise: accept array or legacy 3-arg call
+            if (Array.isArray(slides)) {
+                _diagSlides = slides;
             } else {
-                embedEl.src = imageSrc;
+                // Legacy: showDiagramModal(src, caption, title)
+                _diagSlides = [{ src: slides, caption: _unused, title: _unused2 ?? 'Diagram' }];
             }
+            _diagIdx = 0;
+            _renderDiagramSlide();
 
-            captionEl.innerHTML = caption;
-            titleEl.innerHTML = `<i class="fa-solid fa-diagram-project text-blue-500"></i> ${title}`;
-
+            const modal = document.getElementById('diagramModal');
             modal.classList.remove('hidden');
             modal.style.opacity = '0';
             setTimeout(() => {
@@ -396,13 +414,52 @@
             }, 10);
         }
 
+        function _renderDiagramSlide() {
+            const { src, caption, title = 'Diagram' } = _diagSlides[_diagIdx];
+            const embedEl = document.getElementById('diagramImage');
+            const captionEl = document.getElementById('diagramCaption');
+            const titleEl = document.getElementById('diagramTitle');
+            const counter = document.getElementById('diagramCounter');
+            const prevBtn = document.getElementById('diagramPrev');
+            const nextBtn = document.getElementById('diagramNext');
+
+            const multi = _diagSlides.length > 1;
+
+            // Counter
+            if (multi) {
+                counter.textContent = `${_diagIdx + 1} / ${_diagSlides.length}`;
+                counter.classList.remove('hidden');
+            } else {
+                counter.classList.add('hidden');
+            }
+
+            // Nav buttons
+            prevBtn.classList.toggle('hidden', !multi);
+            nextBtn.classList.toggle('hidden', !multi);
+            prevBtn.disabled = _diagIdx === 0;
+            nextBtn.disabled = _diagIdx === _diagSlides.length - 1;
+            prevBtn.style.opacity = prevBtn.disabled ? '0.3' : '1';
+            nextBtn.style.opacity = nextBtn.disabled ? '0.3' : '1';
+
+            // Source
+            const isPDF = src.toLowerCase().endsWith('.pdf');
+            embedEl.src = isPDF ? src + '#view=FitH&toolbar=0' : src;
+
+            captionEl.innerHTML = caption;
+            titleEl.innerHTML = `<i class="fa-solid fa-diagram-project text-blue-500"></i> ${title}`;
+        }
+
+        function stepDiagram(dir) {
+            const next = _diagIdx + dir;
+            if (next < 0 || next >= _diagSlides.length) return;
+            _diagIdx = next;
+            _renderDiagramSlide();
+        }
+
         function closeDiagramModal() {
             const modal = document.getElementById('diagramModal');
             modal.style.opacity = '0';
-
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
+            setTimeout(() => modal.classList.add('hidden'), 300);
         }
 
     </script>

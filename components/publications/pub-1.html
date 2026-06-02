@@ -47,11 +47,18 @@
             class="text-blue-600 hover:underline flex items-center gap-1">
             📝 Abstract
         </a>
-        <a href="#" onclick="showDiagramModal(
-       'assets/images/pub-images/plant_main_diag.pdf',
-        '<strong>PLANT</strong> teaches attention where to look before fine-tuning begins — guiding models toward the most informative tokens for each label, especially in large and highly imbalanced label spaces.',
-       'Figure 1: PLANT Architecture'
-   )" class="text-blue-600 hover:underline flex items-center gap-1">
+        <a href="#" onclick="showDiagramModal([
+    {
+        src: 'assets/images/pub-images/plant_main_diag.pdf',
+        caption: '<strong>PLANT</strong> teaches attention where to look before fine-tuning begins — guiding models toward the most informative tokens for each label, especially in large and highly imbalanced label spaces.',
+        title: 'Figure 1: PLANT Architecture'
+    },
+    // {
+    //     src: 'assets/images/pub-images/plant_results.pdf',
+    //     caption: 'Results on MIMIC-III across label space sizes, comparing PLANT against baseline fine-tuning approaches.',
+    //     title: 'Figure 2: Results'
+    // }
+])" class="text-blue-600 hover:underline flex items-center gap-1">
             🏗️ Diagram
         </a>
         <a href="https://arxiv.org/pdf/2410.23066.pdf" target="_blank" rel="noopener noreferrer"
