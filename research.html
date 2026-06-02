@@ -186,6 +186,51 @@
         </div>
     </div>
 
+    <!-- Premium Diagram Modal -->
+    <div id="diagramModal"
+        class="hidden fixed inset-0 bg-black/80 backdrop-blur-2xl flex items-center justify-center z-50 transition-opacity duration-300">
+        <div class="bg-white w-full max-w-7xl mx-4 rounded-3xl shadow-[0_0_100px_-10px_rgb(59,130,246,0.5),0_40px_90px_-20px_rgb(0,0,0,0.35)]
+                hover:shadow-[0_0_150px_20px_rgb(59,130,246,0.75),0_50px_120px_-20px_rgb(0,0,0,0.45)]
+                hover:ring-4 hover:ring-blue-500/40 
+            overflow-hidden border border-white/60 transition-all duration-500 max-h-[92vh] flex flex-col">
+
+            <!-- Header -->
+            <div
+                class="px-8 py-5 border-b border-zinc-100 flex items-center justify-between bg-gradient-to-r from-zinc-50 to-white shrink-0">
+                <h2 id="diagramTitle" class="text-2xl font-semibold text-zinc-900 flex items-center gap-3">
+                    <i class="fa-solid fa-diagram-project text-blue-500"></i>
+                    Diagram
+                </h2>
+                <button onclick="closeDiagramModal()"
+                    class="w-10 h-10 flex items-center justify-center text-3xl text-zinc-400 hover:text-zinc-600 hover:rotate-90 transition-all duration-300">
+                    ×
+                </button>
+            </div>
+
+            <!-- Diagram Container -->
+            <div class="p-6 bg-zinc-50 flex flex-col items-center overflow-auto">
+                <div
+                    class="w-full flex items-center justify-center bg-white rounded-2xl p-4 shadow-inner border border-zinc-100">
+                    <iframe id="diagramImage" src="" class="w-full h-full rounded-xl border-0 transition-all"
+                        style="height: clamp(300px, 36vh, 800px);" title="Paper Diagram"></iframe>
+                </div>
+
+                <!-- Caption -->
+                <div id="diagramCaption"
+                    class="mt-4 text-center max-w-4xl text-zinc-600 text-[19.2px] leading-relaxed px-4 shrink-0">
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="px-8 py-4 bg-zinc-50 border-t border-zinc-100 flex justify-end shrink-0">
+                <button onclick="closeDiagramModal()"
+                    class="px-8 py-3 bg-white border border-zinc-300 text-zinc-700 hover:bg-zinc-900 hover:text-white hover:border-zinc-900 rounded-2xl font-medium transition-all active:scale-95">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Load Navbar
         fetch('components/navbar.html')
@@ -319,6 +364,45 @@
                     btn.innerHTML = originalText;
                 }, 2000);
             });
+        }
+
+        // Diagram Modal Functions
+        function showDiagramModal(imageSrc, caption, title = "Diagram") {
+            const modal = document.getElementById('diagramModal');
+            const embedEl = document.getElementById('diagramImage');
+            const captionEl = document.getElementById('diagramCaption');
+            const titleEl = document.getElementById('diagramTitle');
+
+            const isPDF = imageSrc.toLowerCase().endsWith('.pdf');
+
+            if (isPDF) {
+                embedEl.tagName === 'IFRAME'
+                    ? (embedEl.src = imageSrc)
+                    : embedEl.setAttribute('src', imageSrc);
+                // Append #view=FitH so the PDF fits width on load
+                embedEl.src = imageSrc + '#view=FitH&toolbar=0';
+            } else {
+                embedEl.src = imageSrc;
+            }
+
+            captionEl.innerHTML = caption;
+            titleEl.innerHTML = `<i class="fa-solid fa-diagram-project text-blue-500"></i> ${title}`;
+
+            modal.classList.remove('hidden');
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.style.transition = 'opacity 300ms ease-out';
+                modal.style.opacity = '1';
+            }, 10);
+        }
+
+        function closeDiagramModal() {
+            const modal = document.getElementById('diagramModal');
+            modal.style.opacity = '0';
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
         }
 
     </script>
