@@ -269,26 +269,6 @@
             .then(data => document.getElementById('footer').innerHTML = data)
             .catch(err => console.error('Footer load error:', err));
 
-        // Load Publications
-        const publications = [
-            'components/publications/pub-1.html',
-            'components/publications/pub-2.html',
-            // 'components/publications/pub-3.html'
-            // Add more files here as you create them
-        ];
-
-        const container = document.getElementById('publications-container');
-        container.innerHTML = ''; // Clear loading message
-
-        publications.forEach(file => {
-            fetch(file)
-                .then(response => response.text())
-                .then(html => {
-                    container.innerHTML += html;
-                })
-                .catch(err => console.error('Error loading', file, err));
-        });
-
         // Abstract Modal Functions
         let currentTimeout = null;
 
@@ -462,6 +442,12 @@
             setTimeout(() => modal.classList.add('hidden'), 300);
         }
 
+    </script>
+
+    // Load Publications
+    <script src="js/publications.js"></script>
+    <script>
+        loadPublications('publications-container');
     </script>
 </body>
 
