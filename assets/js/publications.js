@@ -9,7 +9,7 @@
  * Adjust RECENT_COUNT to change how many appear on the index page.
  */
 
-const RECENT_COUNT = 3; // ← change this to show more/fewer on the home page
+const RECENT_COUNT = 2; // ← change this to show more/fewer on the home page
 
 const PUBLICATIONS = [
   { file: 'components/publications/pub-2.html', date: '2026-06-02' },
