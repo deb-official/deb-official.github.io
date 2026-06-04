@@ -1,0 +1,604 @@
+/* ============================================================
+   site.css — Shared stylesheet for debjyotisaharoy.com
+   ============================================================
+   HOW TO USE ON A NEW PAGE
+   ------------------------
+   1. In <head>, include the three CDN links + this file:
+
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+      <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+            rel="stylesheet">
+      <link rel="stylesheet" href="assets/css/site.css">
+
+   2. Copy only the HTML blocks you need from index.html.
+      Every class below maps to a named section — search the
+      section header (e.g. "HERO") to find related classes.
+
+   3. Add a page-specific <style> block AFTER this link for
+      any overrides or additions unique to that page.
+   ============================================================ */
+
+
+/* ─────────────────────────────────────────────────────────────
+   1. DESIGN TOKENS
+   ───────────────────────────────────────────────────────────── */
+:root {
+    /* Brand colours */
+    --accent-blue:   #4a8fe8;
+    --accent-violet: #7c6ff7;
+    --accent-teal:   #38bdf8;
+
+    /* Surface colours */
+    --hero-bg:  #06070d;
+    --body-bg:  #f4f3ef;
+
+    /* Text */
+    --text-dark:    #0d1117;
+    --text-muted:   #64748b;
+
+    /* Borders */
+    --border-light: rgba(0, 0, 0, 0.08);
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   2. RESET & BASE
+   ───────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400; 
+    background: var(--body-bg);
+    color: var(--text-dark);
+    margin: 0;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   3. TYPOGRAPHY UTILITIES
+   Reusable heading and label styles for any page section.
+   ───────────────────────────────────────────────────────────── */
+
+/* Small uppercase label above a section title */
+.section-eyebrow {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+    margin-bottom: 6px;
+}
+
+/* Section heading — Fraunces display serif */
+.section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+}
+
+/* Thin rule below a section header row */
+.section-header-rule {
+    border: none;
+    border-top: 1px solid var(--border-light);
+    margin-top: 20px;
+}
+
+/* "View all →" style link used in section headers */
+.view-all-link {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--accent-blue);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: opacity 0.2s;
+}
+.view-all-link:hover { opacity: 0.7; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   4. BUTTONS
+   Two variants used throughout the site:
+     .btn-solid  — filled primary action
+     .btn-ghost  — outlined secondary action (works on dark bg)
+   ───────────────────────────────────────────────────────────── */
+.btn-solid {
+    background: var(--accent-blue);
+    color: #fff;
+    padding: 13px 30px;
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    display: inline-block;
+}
+.btn-solid:hover {
+    background: #3a7cd4;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(74, 143, 232, 0.3);
+}
+
+.btn-ghost {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: rgba(255, 255, 255, 0.78);
+    padding: 13px 30px;
+    border-radius: 100px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    display: inline-block;
+}
+.btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.28);
+    transform: translateY(-2px);
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   5. HERO SECTION
+   Full-bleed dark hero used on the home page.
+   HTML structure required:
+
+   <section class="hero-section">
+     <div class="hero-dots"></div>
+     <div class="orb orb-1"></div>
+     <div class="orb orb-2"></div>
+     <div class="orb orb-3"></div>
+     <!-- content -->
+     <a href="#next" class="scroll-hint">...</a>
+   </section>
+   <div class="hero-seam"></div>
+   ───────────────────────────────────────────────────────────── */
+.hero-section {
+    background: var(--hero-bg);
+    position: relative;
+    overflow: hidden;
+    min-height: 62vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Dot-grid texture overlay */
+.hero-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+    background-size: 28px 28px;
+    z-index: 0;
+}
+
+/* Ambient glow orbs */
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    will-change: transform;
+}
+.orb-1 {
+    width: 640px; height: 640px;
+    background: radial-gradient(circle at center, rgba(74, 143, 232, 0.13) 0%, transparent 65%);
+    top: -240px; right: -60px;
+    animation: drift 14s ease-in-out infinite;
+}
+.orb-2 {
+    width: 420px; height: 420px;
+    background: radial-gradient(circle at center, rgba(124, 111, 247, 0.11) 0%, transparent 65%);
+    bottom: -120px; left: 40px;
+    animation: drift 18s ease-in-out infinite reverse;
+    animation-delay: -6s;
+}
+.orb-3 {
+    width: 280px; height: 280px;
+    background: radial-gradient(circle at center, rgba(16, 185, 129, 0.08) 0%, transparent 65%);
+    top: 35%; right: 18%;
+    animation: drift 22s ease-in-out infinite;
+    animation-delay: -10s;
+}
+
+@keyframes drift {
+    0%,  100% { transform: translate(0, 0); }
+    30%        { transform: translate(24px, -18px); }
+    65%        { transform: translate(-16px, 12px); }
+}
+
+/* Gradient seam between hero and body */
+.hero-seam {
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(74, 143, 232, 0.35) 40%,
+        rgba(124, 111, 247, 0.35) 60%,
+        transparent 100%
+    );
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   6. PROFILE RING
+   Spinning conic-gradient ring around the profile photo.
+   HTML structure required:
+
+   <div class="profile-wrap">
+     <div class="ring-spinner"></div>
+     <div class="ring-gap"></div>
+     <img src="..." alt="..." class="profile-photo">
+   </div>
+   ───────────────────────────────────────────────────────────── */
+.profile-wrap {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 28px;
+    flex-shrink: 0;
+}
+
+.ring-spinner {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        var(--accent-blue)   0%,
+        var(--accent-violet) 35%,
+        var(--accent-teal)   60%,
+        var(--accent-blue)   100%
+    );
+    animation: spin-ring 5s linear infinite;
+}
+
+.ring-gap {
+    position: absolute;
+    inset: 2px;
+    border-radius: 50%;
+    background: var(--hero-bg);
+}
+
+/* Explicit top/left/width/height keeps the image perfectly square
+   so border-radius: 50% always produces a true circle. */
+.profile-photo {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    width: calc(100% - 14px);
+    height: calc(100% - 14px);
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 20%;
+    z-index: 1;
+    display: block;
+}
+
+@keyframes spin-ring { to { transform: rotate(360deg); } }
+
+
+/* ─────────────────────────────────────────────────────────────
+   7. HERO CONTENT
+   Text, affiliation tags, and social icons inside the hero.
+   ───────────────────────────────────────────────────────────── */
+
+/* Large display name */
+.hero-name {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+}
+
+/* Italic sub-headline */
+.hero-tagline {
+    color: rgba(255, 255, 255, 0.42);
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.65;
+    max-width: 480px;
+    font-style: italic;
+}
+
+/* Frosted-glass affiliation pills */
+.affil-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    color: rgba(255, 255, 255, 0.65);
+    padding: 7px 16px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.015em;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.affil-tag:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.18);
+    color: #fff;
+}
+
+/* Small accent dot inside affiliation pills */
+.affil-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    flex-shrink: 0;
+}
+
+/* Separator between affiliation pills */
+.affil-sep {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 1.1rem;
+    user-select: none;
+}
+
+/* Circular social link icons */
+.social-icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.42);
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+.social-icon:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   8. SCROLL HINT
+   Animated vertical line + "Scroll" label anchored to the
+   bottom of the hero section.
+
+   HTML: <a href="#section-id" class="scroll-hint">
+           <div class="scroll-hint-line"></div>
+           <span class="scroll-hint-text">Scroll</span>
+         </a>
+   ───────────────────────────────────────────────────────────── */
+.scroll-hint {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+}
+.scroll-hint-text {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+}
+.scroll-hint-line {
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.55), transparent);
+    animation: line-pulse 2.2s ease-in-out infinite;
+}
+@keyframes line-pulse {
+    0%,  100% { opacity: 0.3; }
+    50%        { opacity: 0.9; }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   9. PAGE SECTION LAYOUTS
+   Standard padded content sections used across all pages.
+   ───────────────────────────────────────────────────────────── */
+
+/* Default body section (publications, about, etc.) */
+.page-section {
+    background: var(--body-bg);
+    padding: 80px 0 96px;
+}
+
+/* Alias kept for backwards compatibility */
+.pubs-section {
+    background: var(--body-bg);
+    padding: 80px 0 96px;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   10. ENTRANCE ANIMATIONS
+   Add .fade-up to any element plus a delay class (.d1–.d6)
+   for a staggered reveal on page load.
+   ───────────────────────────────────────────────────────────── */
+.fade-up {
+    opacity: 0;
+    transform: translateY(22px);
+    animation: fade-up-kf 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes fade-up-kf {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.d1 { animation-delay: 0.05s; }
+.d2 { animation-delay: 0.18s; }
+.d3 { animation-delay: 0.31s; }
+.d4 { animation-delay: 0.44s; }
+.d5 { animation-delay: 0.57s; }
+.d6 { animation-delay: 0.70s; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   11. NAVBAR
+   Base link styles + per-page active-state highlighting.
+
+   HOW THE ACTIVE HIGHLIGHT WORKS
+   ───────────────────────────────
+   Each page sets a unique class on <body> (e.g. "home-page",
+   "research-page"). The selectors below combine that body class
+   with the nav link's own class so only the current page's link
+   is highlighted. Adding a new page means adding one line here
+   and the matching class on <body> in that page's HTML.
+   ───────────────────────────────────────────────────────────── */
+.nav-link {
+    transition: color 0.2s, transform 0.2s;
+    display: inline-block;   /* needed for translateY to apply */
+    color: inherit;
+    text-decoration: none;
+}
+.nav-link:hover {
+    color: #3b82f6;
+    transform: translateY(-2px);
+}
+
+/* Active states — only fires on the matching page */
+.home-page     .nav-home     { color: #3b82f6; font-weight: 600; }
+.about-page    .nav-about    { color: #3b82f6; font-weight: 600; }
+.research-page .nav-research { color: #3b82f6; font-weight: 600; }
+.cv-page       .nav-cv       { color: #3b82f6; font-weight: 600; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   12. INNER PAGE HEADER
+   Compact dark header for all pages except the home page.
+   Reuses the same dot-grid + orb system as the hero, but
+   shorter and without the profile ring.
+
+   HTML structure:
+
+   <header class="page-header">
+     <div class="hero-dots"></div>
+     <div class="orb orb-1"></div>
+     <div class="orb orb-2"></div>
+     <div class="page-header-content">
+       <p class="page-header-eyebrow">Optional label</p>
+       <h1 class="page-header-title">Page Title</h1>
+       <p class="page-header-sub">Optional subtitle</p>
+     </div>
+   </header>
+   <div class="hero-seam"></div>
+   ───────────────────────────────────────────────────────────── */
+.page-header {
+    background: var(--hero-bg);
+    position: relative;
+    overflow: hidden;
+    padding: 72px 0 64px;
+    display: flex;
+    align-items: center;
+}
+
+.page-header-content {
+    position: relative;
+    z-index: 1;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.page-header-eyebrow {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+    margin-bottom: 10px;
+}
+
+.page-header-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 16px;
+}
+
+.page-header-sub {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.65;
+    max-width: 580px;
+    font-style: italic;
+    margin: 0;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   13. KEYWORD / TAG CHIPS
+   Small frosted-pill labels used in page headers or cards.
+   Two sizes: default and .chip-sm.
+
+   HTML:
+   <div class="chip-row">
+     <span class="chip">Natural Language Processing</span>
+     <span class="chip">Large Language Models</span>
+   </div>
+   ───────────────────────────────────────────────────────────── */
+.chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+/* On a dark background (inside page-header) */
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.65);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.chip:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+/* On a light background (inside body sections) */
+.chip-light {
+    background: #fff;
+    border: 1px solid var(--border-light);
+    color: var(--text-dark);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    display: inline-block;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.chip-light:hover {
+    border-color: rgba(74, 143, 232, 0.4);
+    box-shadow: 0 0 0 3px rgba(74, 143, 232, 0.08);
+}
