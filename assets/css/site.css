@@ -254,10 +254,11 @@ body {
     border-radius: 50%;
     background: conic-gradient(
         from 0deg,
-        var(--accent-blue)   0%,
-        var(--accent-violet) 35%,
-        var(--accent-teal)   60%,
-        var(--accent-blue)   100%
+        #ff3b30 0%,      /* red */
+        #ff9500 25%,     /* orange transition */
+        #ffd60a 50%,     /* yellow */
+        #34c759 75%,     /* green */
+        #ff3b30 100%     /* back to red for seamless loop */
     );
     animation: spin-ring 5s linear infinite;
 }
