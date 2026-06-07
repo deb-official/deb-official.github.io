@@ -61,14 +61,14 @@
 
     <!-- Row 5: action buttons -->
     <div class="flex flex-wrap gap-1.5 pt-1 border-t border-zinc-100">
-        <a href="#" onclick="showAbstractModal(this.dataset.abstract)"
+        <a href="javascript:void(0)" onclick="showAbstractModal(this.dataset.abstract)"
             data-abstract="Paste your full abstract text here. This will be typed out character by character with a beautiful typewriter effect."
             class="inline-flex items-center gap-1.5 text-xs text-zinc-500 border border-zinc-200
                   px-3 py-1.5 rounded-lg hover:text-blue-600 hover:border-blue-300
                   hover:bg-blue-50 transition-all">
             <i class="fa-regular fa-file-lines text-[12px]"></i> Abstract
         </a>
-        <a href="#" onclick="showDiagramModal([
+        <a href="javascript:void(0)" onclick="showDiagramModal([
             {
         src: 'assets/images/pub-images/plant_main_diag.pdf',
         caption: '<strong>PLANT</strong> teaches attention where to look before fine-tuning begins — guiding models toward the most informative tokens for each label, especially in large and highly imbalanced label spaces.',
@@ -90,7 +90,7 @@
                   hover:bg-blue-50 transition-all">
             <i class="fa-solid fa-arrow-up-right-from-square text-[12px]"></i> arXiv
         </a>
-        <a href="#" onclick="showCitationModal(this.dataset.citation)" data-citation="@article{roy2024don,
+        <a href="javascript:void(0)" onclick="showCitationModal(this.dataset.citation)" data-citation="@article{roy2024don,
         title={Don't Pay Attention, PLANT It: Pretraining Attention via Learning-to-Rank},
         author={Roy, Debjyoti Saha and Wallace, Byron C and Aslam, Javed A},
         journal={arXiv preprint arXiv:2410.23066},
