@@ -86,12 +86,12 @@
 
             <!-- Social Links -->
             <div class="flex items-center justify-center gap-3 fade-up d6">
-                <a href="https://github.com/yourusername"                   target="_blank" class="social-icon hover:text-blue-400 transition" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://scholar.google.com/citations?user=YOUR-ID" target="_blank" class="social-icon hover:text-blue-400 transition" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-                <a href="https://linkedin.com/in/yourprofile"               target="_blank" class="social-icon hover:text-blue-400 transition" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://x.com/debjyotisaharoy"                    target="_blank" class="social-icon hover:text-blue-400 transition" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
-                <a href="https://bsky.app/profile/yourhandle"               target="_blank" class="social-icon hover:text-blue-400 transition" title="Bluesky"><i class="fab fa-bluesky"></i></a>
-                <a href="https://instagram.com/yourusername"                target="_blank" class="social-icon hover:text-blue-400 transition" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/yourusername"                   target="_blank" class="social-icon hover:text-blue-400 hero-icon-pop d6" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://scholar.google.com/citations?user=YOUR-ID" target="_blank" class="social-icon hover:text-blue-400 hero-icon-pop d7" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://linkedin.com/in/yourprofile"               target="_blank" class="social-icon hover:text-blue-400 hero-icon-pop d8" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/debjyotisaharoy"                    target="_blank" class="social-icon hover:text-blue-400 hero-icon-pop d9" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://bsky.app/profile/yourhandle"               target="_blank" class="social-icon hover:text-blue-400 hero-icon-pop d10" title="Bluesky"><i class="fab fa-bluesky"></i></a>
+                <a href="https://instagram.com/yourusername"                target="_blank" class="social-icon hover:text-blue-400 hero-icon-pop d11" title="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
 
@@ -149,6 +149,17 @@
             .then(html => { document.getElementById('modals-container').innerHTML = html; });
 
         loadPublications('recent-publications-container', RECENT_COUNT);
+    </script>
+
+    <script>
+    // Remove pop animation classes once they've all finished
+    // (last icon: d11 = 1.14s delay + 0.5s duration = 1.65s total)
+    setTimeout(() => {
+        document.querySelectorAll('.hero-icon-pop').forEach(el => {
+            el.classList.remove('hero-icon-pop');
+            ['d6','d7','d8','d9','d10','d11'].forEach(c => el.classList.remove(c));
+        });
+    }, 1700);
     </script>
 
 </body>
