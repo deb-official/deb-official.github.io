@@ -507,6 +507,59 @@ body {
 .d5 { animation-delay: 0.57s; }
 .d6 { animation-delay: 0.70s; }
 
+/* Tagline: blur-to-sharp fade */
+@keyframes hero-blur-in {
+    from { opacity: 0; filter: blur(20px); transform: translateY(16px); }
+    to   { opacity: 1; filter: blur(0);    transform: translateY(0);    }
+}
+
+.hero-blur-in {
+    opacity: 0;
+    animation: hero-blur-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Tagline box — entrance + continuous glow pulse */
+.tagline-box {
+    position: relative;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px 32px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    max-width: 500px;
+    margin: 0 auto;
+    opacity: 0;
+    /* Two animations on different properties — no conflict */
+    animation:
+        tagline-box-in  0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.44s forwards,
+        tagline-pulse   4s  ease-in-out                     1.8s  infinite;
+}
+
+@keyframes tagline-box-in {
+    from {
+        opacity: 0;
+        transform: scale(0.97) translateY(10px);
+        border-color: rgba(255, 255, 255, 0.03);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+@keyframes tagline-pulse {
+    0%,  100% {
+        box-shadow:   none;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        box-shadow:   0 0 28px 6px rgba(74, 143, 232, 0.13);
+        border-color: rgba(74, 143, 232, 0.32);
+    }
+}
+
 /* Social icons: individual spring pop, bouncy */
 @keyframes hero-icon-pop {
     from { opacity: 0; transform: scale(0.6) translateY(10px); }
