@@ -2,7 +2,7 @@
     #abstractText.typing::after {
         content: '';
         display: inline-block;
-        width: 3px;
+        width: 0.55em;
         height: 1em;
         background: #1D9E75;
         vertical-align: -0.15em;
@@ -35,7 +35,9 @@
         transition-all duration-300 ease-out">
         <div
             class="px-8 py-6 border-b border-zinc-100 flex items-center justify-between bg-gradient-to-r from-zinc-50 to-white">
-            <h2 class="text-2xl font-semibold text-zinc-900 flex items-center gap-3">📝 Abstract</h2>
+            <h2 class="text-2xl font-semibold text-zinc-900 flex items-center gap-3">
+                <i class="fa-regular fa-file-lines"></i> Abstract
+            </h2>
             <button onclick="closeAbstractModal()"
                 class="w-10 h-10 flex items-center justify-center text-3xl text-zinc-400 hover:text-zinc-600 hover:rotate-90 transition-all duration-300">×</button>
         </div>

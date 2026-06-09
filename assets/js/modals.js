@@ -10,17 +10,32 @@
 
 let _abstractTimeout = null;
 
-function typeWriter(text, element, speed = 20) {
+function typeWriter(html, element, speed = 20) {
     element.innerHTML = '';
     element.classList.remove('text-balance');
     element.classList.add('typing');
+
+    // Split into tokens: individual text chars, or whole HTML tags as one unit
+    const tokens = [];
+    const tagRegex = /<[^>]+>/g;
+    let lastIndex = 0, match;
+    while ((match = tagRegex.exec(html)) !== null) {
+        for (const ch of html.slice(lastIndex, match.index)) tokens.push(ch);
+        tokens.push(match[0]); // whole tag as one atomic token
+        lastIndex = match.index + match[0].length;
+    }
+    for (const ch of html.slice(lastIndex)) tokens.push(ch);
+
     let i = 0;
+    let accumulated = '';
 
     function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
+        if (i < tokens.length) {
+            accumulated += tokens[i];
+            element.innerHTML = accumulated; // set the whole string, not +=
+            const isTag = tokens[i].startsWith('<');
             i++;
-            _abstractTimeout = setTimeout(type, speed);
+            _abstractTimeout = setTimeout(type, isTag ? 0 : speed);
         } else {
             setTimeout(() => element.classList.remove('typing'), 2000);
         }
