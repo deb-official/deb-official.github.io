@@ -26,9 +26,9 @@
             <span class="text-xs font-medium bg-green-50 text-green-800 border border-green-200
                          px-3 py-0.5 rounded-full">Published</span>
             -->
-            <span class="text-xs font-medium bg-violet-50 text-violet-700 border border-violet-200
+            <span class="text-xs font-medium bg-violet-50 text-emerald-700 border border-emerald-200
              px-3 py-0.5 rounded-full">
-                Attention Pretraining
+                Mechanistic Interpretability
             </span>
         </div>
         <span class="text-xs text-zinc-400">2026</span>
@@ -37,10 +37,10 @@
     <!-- Row 2: title + subtitle -->
     <div class="flex flex-col gap-0.5">
         <h3 class="text-[17px] font-semibold text-zinc-900 leading-snug">
-            Don't Pay Attention, PLANT It
+            Characterize Then Distill
         </h3>
         <p class="text-[13.5px] text-zinc-500 italic leading-snug">
-            Pretraining Attention via Learning-to-Rank
+            Mechanistic Reasoning in Large Output Spaces
         </p>
     </div>
 
@@ -56,51 +56,56 @@
 
     <!-- Row 4: abstract preview -->
     <p class="text-[13px] text-zinc-500 leading-relaxed line-clamp-2">
-        Short description of the paper...
+        <!-- Mechanistic distillation transfers coarse-to-fine reasoning, enabling smaller students to better shortlist and refine over massive label spaces. -->
+        We characterize zero-shot reasoning in large label spaces as shortlisting then refining — and distill that structure into smaller models.
     </p>
 
     <!-- Row 5: action buttons -->
     <div class="flex flex-wrap gap-1.5 pt-1 border-t border-zinc-100">
         <a href="javascript:void(0)" onclick="showAbstractModal(this.dataset.abstract)"
-            data-abstract="Paste your full abstract text here. This will be typed out character by character with a beautiful typewriter effect."
-            class="inline-flex items-center gap-1.5 text-xs text-zinc-500 border border-zinc-200
+        data-abstract="Modern reasoning models offer surprisingly strong zero-shot performance on challenging multi-label tasks that require selecting a small set of relevant options from hundreds of thousands to millions of candidate labels. We investigate &lt;em&gt;how&lt;/em&gt; they achieve this mechanistically. We characterize reasoning as a two-phase process: a broad &lt;strong&gt;shortlisting&lt;/strong&gt; of candidates followed by fine-grained &lt;strong&gt;reasoning&lt;/strong&gt; over the resulting set. We provide evidence across a range of datasets that these steps can be isolated and are complementary. Using this characterization, we develop a &lt;em&gt;mechanistic distillation&lt;/em&gt; strategy that consistently outperforms standard distillation."            
+        class="inline-flex items-center gap-1.5 text-xs text-zinc-500 border border-zinc-200
                   px-3 py-1.5 rounded-lg hover:text-blue-600 hover:border-blue-300
                   hover:bg-blue-50 transition-all">
             <i class="fa-regular fa-file-lines text-[12px]"></i> Abstract
         </a>
         <a href="javascript:void(0)" onclick="showDiagramModal([
             {
-        src: 'assets/images/pub-images/plant_main_diag.pdf',
-        caption: '<strong>PLANT</strong> teaches attention where to look before fine-tuning begins — guiding models toward the most informative tokens for each label, especially in large and highly imbalanced label spaces.',
-        title: 'Figure 1: PLANT Architecture'
+        src: 'assets/images/pub-images/stamp_phase1_diag.pdf',
+        caption: '<strong>Phase 1</strong> — While generating early CoT, we measure whether attention heads attend to salient evidence and write semantically aligned updates as <code>CoarseScore</code>.',
+        title: 'Figure 1: Coarse Characterization'
+
     },
-    // {
-    //     src: 'assets/images/pub-images/plant_results.pdf',
-    //     caption: 'Results on MIMIC-III across label space sizes, comparing PLANT against baseline fine-tuning approaches.',
-    //     title: 'Figure 2: Results'
-    // }
+    {
+        src: 'assets/images/pub-images/stamp_phase2_diag.pdf',
+        caption: '<strong>Phase 2</strong> — During later CoT, attention heads refine predictions by suppressing near-misses and widening margins between these and the correct labels, as captured by <code>RefineScore</code>.',
+        title: 'Figure 2: Fine-Grained Refinement'
+    }
 
         ])" class="inline-flex items-center gap-1.5 text-xs text-zinc-500 border border-zinc-200
                   px-3 py-1.5 rounded-lg hover:text-blue-600 hover:border-blue-300
                   hover:bg-blue-50 transition-all">
             <i class="fa-solid fa-diagram-project text-[12px]"></i> Diagram
         </a>
-        <a href="https://arxiv.org/pdf/2410.23066.pdf" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-zinc-500 border border-zinc-200
+        <a href="https://arxiv.org/pdf/2606.06840.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-zinc-500 border border-zinc-200
                   px-3 py-1.5 rounded-lg hover:text-blue-600 hover:border-blue-300
                   hover:bg-blue-50 transition-all">
             <i class="fa-solid fa-arrow-up-right-from-square text-[12px]"></i> arXiv
         </a>
-        <a href="javascript:void(0)" onclick="showCitationModal(this.dataset.citation)" data-citation="@article{roy2024don,
-        title={Don't Pay Attention, PLANT It: Pretraining Attention via Learning-to-Rank},
-        author={Roy, Debjyoti Saha and Wallace, Byron C and Aslam, Javed A},
-        journal={arXiv preprint arXiv:2410.23066},
-        year={2024}
-        }" class="inline-flex items-center gap-1.5 text-xs text-zinc-500 border border-zinc-200
+        <a href="javascript:void(0)" onclick="showCitationModal(this.dataset.citation)" data-citation="@misc{roy2026characterizedistillmechanisticreasoning,
+      title={Characterize Then Distill: Mechanistic Reasoning in Large Output Spaces}, 
+      author={Debjyoti Saha Roy and Byron C. Wallace and Javed A. Aslam},
+      year={2026},
+      eprint={2606.06840},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2606.06840}, 
+}" class="inline-flex items-center gap-1.5 text-xs text-zinc-500 border border-zinc-200
                   px-3 py-1.5 rounded-lg hover:text-blue-600 hover:border-blue-300
                   hover:bg-blue-50 transition-all">
             <i class="fa-solid fa-quote-right text-[12px]"></i> Cite
         </a>
-        <a href="#" class="inline-flex items-center gap-1.5 text-xs text-zinc-500 border border-zinc-200
+        <a href="https://github.com/research-anon-487/xcube/tree/reasoning" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-zinc-500 border border-zinc-200
                   px-3 py-1.5 rounded-lg hover:text-blue-600 hover:border-blue-300
                   hover:bg-blue-50 transition-all">
             <i class="fa-solid fa-code text-[12px]"></i> Code
