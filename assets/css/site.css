@@ -129,6 +129,13 @@ body {
     letter-spacing: -0.01em;
 }
 
+#abstractModal h2,
+#citationModal h2,
+#diagramModal h2 {
+    font-family: 'Fraunces', serif;
+    letter-spacing: -0.02em;
+}
+
 
 /* ─────────────────────────────────────────────────────────────
    4. BUTTONS
