@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital@1&family=Cormorant+Garamond:ital,wght@1,300;1,400&family=EB+Garamond:ital@1&family=Spectral:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/site.css">
+    <script src="assets/js/site.js"></script>
 </head>
 
 <body class="research-page">
@@ -84,7 +85,11 @@
 
         fetch('components/footer.html')
             .then(r => r.text())
-            .then(d => { document.getElementById('footer').innerHTML = d; })
+            .then(d => {
+                document.getElementById('footer').innerHTML = d;
+                // Run after footer is injected into the DOM
+                initEmailCanvas();
+            })
             .catch(e => console.error('Footer error:', e));
     </script>
 

@@ -22,6 +22,7 @@
         background-attachment: fixed;
     }
     </style>
+    <script src="assets/js/site.js"></script>
 </head>
 
 <body class="home-page">
@@ -141,7 +142,12 @@
 
         fetch('components/footer.html')
             .then(r => r.text())
-            .then(d => { document.getElementById('footer').innerHTML = d; });
+            .then(d => {
+                document.getElementById('footer').innerHTML = d;
+                // Run after footer is injected into the DOM
+                initEmailCanvas();
+            })
+            .catch(e => console.error('Footer error:', e));
     </script>
 
     <!-- Modals -->
