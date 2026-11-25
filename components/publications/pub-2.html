@@ -46,27 +46,25 @@
 
     <!-- Row 3: authors -->
     <p class="text-[13px] text-zinc-500 leading-relaxed">
-        <span class="font-semibold text-emerald-700">Debjyoti Saha Roy</span>,
-        <a href="https://byronwallace.com/" target="_blank"
-            class="hover:text-blue-600 hover:underline transition-colors">Byron C. Wallace</a>
-        &amp;
-        <a href="https://www.ccs.neu.edu/home/jaa/" target="_blank"
-            class="hover:text-blue-600 hover:underline transition-colors">Javed A. Aslam</a>
+        <span class="font-semibold text-emerald-700">Debjyoti Saha Roy</span>
     </p>
 
     <!-- Row 4: abstract preview -->
     <p class="text-[13px] text-zinc-500 leading-relaxed line-clamp-2">
-    We characterize zero-shot reasoning in large label spaces as a two-phase process — shortlisting and refinement — and distill this structure into smaller models.    </p>
+        Reasoning-trained language models can pick a document's few labels from thousands of candidates, zero-shot. We ask which components make these choices, and whether a student can be taught where to look as well as what to write.
+    </p>
 
     <!-- Row 5: action buttons -->
     <div class="flex flex-wrap gap-1.5 pt-1 border-t border-zinc-100">
         <a href="javascript:void(0)" onclick="showAbstractModal(this.dataset.abstract)"
-        data-abstract="Modern reasoning models offer surprisingly strong zero-shot performance on challenging multi-label tasks that require selecting a small set of relevant options from hundreds of thousands to millions of candidate labels. We investigate &lt;em&gt;how&lt;/em&gt; they achieve this mechanistically. We characterize reasoning as a two-phase process: a broad &lt;strong&gt;shortlisting&lt;/strong&gt; of candidates followed by fine-grained &lt;strong&gt;reasoning&lt;/strong&gt; over the resulting set. We provide evidence across a range of datasets that these steps can be isolated and are complementary. Using this characterization, we develop a &lt;em&gt;mechanistic distillation&lt;/em&gt; strategy that consistently outperforms standard distillation."            
+        data-abstract="Reasoning-trained language models can pick a document&#x27;s few labels from thousands of candidates, zero-shot. We ask which components make these choices, and whether a student can be taught where to look as well as what to write, so its decisions trace to a few components and what they read. We study clinical coding of MIMIC-IV discharge summaries with all 5,651 candidate codes in the prompt. Each choice is one token: a region of the code list, a code within it, or the departure from a similar code named earlier. We measure each attention head&#x27;s causal effect there by removing it and transplanting it into another summary. On essentially every summary, a small, shared set of heads, partly specific to each kind of choice, is necessary and sufficient; blocking what the tested heads read removes their effect. &lt;strong&gt;MISTILL&lt;/strong&gt; builds on this: besides the teacher&#x27;s text, it supervises where the student attends at the teacher&#x27;s decision tokens. In a cross-family student, its own heads, found after training, restore nearly twice as much of the choice between similar codes as before, where chain-of-thought distillation alone adds under a third; one that already carried most of it gains a little, consistently across seeds, and both gains hold on the students&#x27; own completed traces. On two corpora with coder-marked evidence, a MISTILL student&#x27;s decision heads attend to it more, and more specifically, than a chain-of-thought-distilled student&#x27;s. Controls locate the gain in supervising attention at the decision tokens; in the cross-family student, a target built from unselected teacher heads loses it. No task difference from chain-of-thought distillation is detected at matched precision. The structure recurs in a second reasoner; ranked heads beat random ones on legal-document labelling and code generation; and without retraining the students keep their gain on Spanish case reports and a QA benchmark."            
         class="inline-flex items-center gap-1.5 text-xs text-zinc-500 border border-zinc-200
                   px-3 py-1.5 rounded-lg hover:text-blue-600 hover:border-blue-300
                   hover:bg-blue-50 transition-all">
             <i class="fa-regular fa-file-lines text-[12px]"></i> Abstract
         </a>
+        <!-- Hidden: these two figures show the earlier two-phase (CoarseScore/RefineScore) framing,
+             which the current paper (arXiv v6) no longer uses. Replace with a current figure.
         <a href="javascript:void(0)" onclick="showDiagramModal([
             {
         src: 'assets/images/pub-images/stamp_phase1_diag.pdf',
@@ -84,7 +82,7 @@
                   px-3 py-1.5 rounded-lg hover:text-blue-600 hover:border-blue-300
                   hover:bg-blue-50 transition-all">
             <i class="fa-solid fa-diagram-project text-[12px]"></i> Diagram
-        </a>
+        </a> -->
         <a href="https://arxiv.org/pdf/2606.06840.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-zinc-500 border border-zinc-200
                   px-3 py-1.5 rounded-lg hover:text-blue-600 hover:border-blue-300
                   hover:bg-blue-50 transition-all">
@@ -92,7 +90,7 @@
         </a>
         <a href="javascript:void(0)" onclick="showCitationModal(this.dataset.citation)" data-citation="@misc{roy2026characterizedistillmechanisticreasoning,
       title={Characterize Then Distill: Mechanistic Reasoning in Large Output Spaces}, 
-      author={Debjyoti Saha Roy and Byron C. Wallace and Javed A. Aslam},
+      author={Debjyoti Saha Roy},
       year={2026},
       eprint={2606.06840},
       archivePrefix={arXiv},
