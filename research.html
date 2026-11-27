@@ -1,103 +1,659 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<!--
+  debjyoti.org, research page.
+  Hand-written static HTML with no build step: this file is the source of truth, edit it directly.
+  The icon sprite, the header and the footer are DUPLICATED in index.html, research.html and 404.html.
+  When you change one of them, make the same change in all three files. README.md explains every part.
+-->
+<html lang="en" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research | Debjyoti Saha Roy</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital@1&family=Cormorant+Garamond:ital,wght@1,300;1,400&family=EB+Garamond:ital@1&family=Spectral:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/site.css">
-    <script src="assets/js/site.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Research | Debjyoti Saha Roy</title>
+  <meta name="description" content="Research on large output spaces: mechanistic interpretability of reasoning models, MISTILL distillation and PLANT attention pretraining (NeurIPS 2026).">
+  <meta name="author" content="Debjyoti Saha Roy">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F5F1E8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141110" media="(prefers-color-scheme: dark)">
+  <!-- Theme boot: runs before first paint so the stored or system theme applies without a flash. -->
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      var fallback = function () { d.classList.remove('js'); d.classList.add('no-js'); };
+      d.classList.remove('no-js'); d.classList.add('js');
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      d.setAttribute('data-theme', t);
+      // The browser bar takes the chosen theme's paper colour at once (the same values as THEME_COLOR in site.js).
+      var metas = document.querySelectorAll('meta[name="theme-color"]');
+      for (var i = 0; i < metas.length; i++) metas[i].setAttribute('content', t === 'dark' ? '#141110' : '#F5F1E8');
+      // If the site's scripts fail to load or to start, fall back to the complete no-JS layout.
+      document.addEventListener('error', function (e) { var s = e.target; if (s && s.tagName === 'SCRIPT' && /\/assets\/js\//.test(s.src)) fallback(); }, true);
+      document.addEventListener('DOMContentLoaded', function () { if (!d.classList.contains('js-ready')) fallback(); });
+    })();
+  </script>
+  <link rel="preload" href="assets/fonts/fraunces-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css?v=2026-11-25">
+  <link rel="icon" href="assets/img/icons/icon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <script type="module" src="assets/js/site.js?v=2026-11-25"></script>
+  <link rel="canonical" href="https://debjyoti.org/research.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Debjyoti Saha Roy">
+  <meta property="og:title" content="Research | Debjyoti Saha Roy">
+  <meta property="og:description" content="Research by Debjyoti Saha Roy on learning and reasoning in large output spaces: mechanistic interpretability of reasoning models, mechanistic distillation (MISTILL) and attention pretraining (PLANT, NeurIPS 2026).">
+  <meta property="og:url" content="https://debjyoti.org/research.html">
+  <meta property="og:image" content="https://debjyoti.org/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Debjyoti Saha Roy, PhD candidate at Northeastern University. A field of 5,651 dots with a few chosen.">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@debjyotisaharoy">
+  <meta name="twitter:title" content="Research | Debjyoti Saha Roy">
+  <meta name="twitter:description" content="Research by Debjyoti Saha Roy on learning and reasoning in large output spaces: mechanistic interpretability of reasoning models, mechanistic distillation (MISTILL) and attention pretraining (PLANT, NeurIPS 2026).">
+  <meta name="twitter:image" content="https://debjyoti.org/assets/img/og.png">
+  <meta name="twitter:image:alt" content="Debjyoti Saha Roy, PhD candidate at Northeastern University. A field of 5,651 dots with a few chosen.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://debjyoti.org/research.html",
+        "url": "https://debjyoti.org/research.html",
+        "name": "Research | Debjyoti Saha Roy",
+        "isPartOf": { "@id": "https://debjyoti.org/#website" },
+        "about": { "@id": "https://debjyoti.org/#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://debjyoti.org/#person",
+        "name": "Debjyoti Saha Roy",
+        "givenName": "Debjyoti",
+        "familyName": "Saha Roy",
+        "url": "https://debjyoti.org/"
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "@id": "https://arxiv.org/abs/2410.23066",
+        "headline": "Don't Pay Attention, PLANT It: Pretraining Attention via Learning-to-Rank",
+        "name": "Don't Pay Attention, PLANT It: Pretraining Attention via Learning-to-Rank",
+        "author": [
+          { "@id": "https://debjyoti.org/#person" },
+          { "@type": "Person", "name": "Byron C. Wallace", "url": "https://byronwallace.com/" },
+          { "@type": "Person", "name": "Javed A. Aslam", "url": "https://www.ccs.neu.edu/home/jaa/" }
+        ],
+        "datePublished": "2026",
+        "isPartOf": { "@type": "PublicationVolume", "name": "Advances in Neural Information Processing Systems (NeurIPS 2026)" },
+        "url": "https://arxiv.org/abs/2410.23066",
+        "subjectOf": { "@type": "WebPage", "url": "https://debjyoti.org/plant/" },
+        "identifier": { "@type": "PropertyValue", "propertyID": "arXiv", "value": "2410.23066" }
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "@id": "https://github.com/deb-official/plant",
+        "name": "PLANT (code)",
+        "codeRepository": "https://github.com/deb-official/plant",
+        "isBasedOn": { "@id": "https://arxiv.org/abs/2410.23066" },
+        "author": { "@id": "https://debjyoti.org/#person" }
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "@id": "https://arxiv.org/abs/2606.06840",
+        "headline": "Characterize Then Distill: Mechanistic Reasoning in Large Output Spaces",
+        "name": "Characterize Then Distill: Mechanistic Reasoning in Large Output Spaces",
+        "author": [{ "@id": "https://debjyoti.org/#person" }],
+        "datePublished": "2026-06",
+        "publisher": { "@type": "Organization", "name": "arXiv" },
+        "url": "https://arxiv.org/abs/2606.06840",
+        "identifier": { "@type": "PropertyValue", "propertyID": "arXiv", "value": "2606.06840" }
+      }
+    ]
+  }
+  </script>
 </head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<body class="research-page">
+  <!-- ===== Icon sprite (duplicated on every page: keep the three copies identical).
+       Use: <svg class="icon" aria-hidden="true"><use href="#i-name"/></svg> ===== -->
+  <svg class="visually-hidden" aria-hidden="true" focusable="false" width="0" height="0">
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-out" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-quote" viewBox="0 0 24 24"><path d="M10 7H6a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h3v1a3 3 0 0 1-3 3M19 7h-4a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h3v1a3 3 0 0 1-3 3"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5Z"/></symbol>
+    <symbol id="i-replay" viewBox="0 0 24 24"><path d="M4 4v5h5"/><path d="M4.6 9A8 8 0 1 1 4 12.5"/></symbol>
+    <symbol id="i-flip" viewBox="0 0 24 24"><path d="M3 8h13l-3-3M21 16H8l3 3"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+    <symbol id="i-slides" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20h8"/></symbol>
+    <symbol id="i-poster" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9h18M9 9v11"/></symbol>
+    <symbol id="i-page" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.400 5.600 12 3Z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+    <symbol id="i-scholar" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+    <symbol id="i-arxiv" viewBox="0 0 24 24"><path d="M3.8423 0a1.0037 1.0037 0 0 0-.922.6078c-.1536.3687-.0438.6275.2938 1.1113l6.9185 8.3597-1.0223 1.1058a1.0393 1.0393 0 0 0 .003 1.4229l1.2292 1.3135-5.4391 6.4444c-.2803.299-.4538.823-.2971 1.1986a1.0253 1.0253 0 0 0 .9585.635.9133.9133 0 0 0 .6891-.3405l5.783-6.126 7.4902 8.0051a.8527.8527 0 0 0 .6835.2597.9575.9575 0 0 0 .8777-.6138c.1577-.377-.017-.7502-.306-1.1407l-7.0518-8.3418 1.0632-1.13a.9626.9626 0 0 0 .0089-1.3165L4.6336.4639s-.3733-.4535-.768-.463zm0 .272h.0166c.2179.0052.4874.2715.5644.3639l.005.006.0052.0055 10.169 10.9905a.6915.6915 0 0 1-.0072.945l-1.0666 1.133-1.4982-1.7724-8.5994-10.39c-.3286-.472-.352-.6183-.2592-.841a.7307.7307 0 0 1 .6704-.4401Zm14.341 1.5701a.877.877 0 0 0-.6554.2418l-5.6962 6.1584 1.6944 1.8319 5.3089-6.5138c.3251-.4335.479-.6603.3247-1.0292a1.1205 1.1205 0 0 0-.9763-.689zm-7.6557 12.2823 1.3186 1.4135-5.7864 6.1295a.6494.6494 0 0 1-.4959.26.7516.7516 0 0 1-.706-.4669c-.1119-.2682.0359-.6864.2442-.9083l.0051-.0055.0047-.0055z"/></symbol>
+  </svg>
 
-    <!-- Navbar -->
-    <div id="navbar"></div>
+  <!-- ===== Header (duplicated on every page: index.html, research.html, 404.html) ===== -->
+  <header class="site-header">
+    <div class="wrap site-header__bar">
+      <a class="brand" href="./" aria-label="Debjyoti Saha Roy, home">
+        <svg class="brand__mark" viewBox="0 0 22 22" aria-hidden="true" focusable="false">
+          <g class="m-dot"><circle cx="4" cy="4" r="1.7"/><circle cx="11" cy="4" r="1.7"/><circle cx="18" cy="4" r="1.7"/><circle cx="4" cy="11" r="1.7"/><circle cx="11" cy="11" r="1.7"/><circle cx="4" cy="18" r="1.7"/><circle cx="11" cy="18" r="1.7"/><circle cx="18" cy="18" r="1.7"/></g>
+          <circle class="m-on" cx="18" cy="11" r="3"/>
+        </svg>
+        <span>Debjyoti Saha Roy</span>
+      </a>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path class="bar bar--1" d="M4 8h16"/><path class="bar bar--2" d="M4 16h16"/></svg>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="./#news">News</a></li>
+          <li><a href="research.html" aria-current="page">Research</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="./#talks">Talks</a></li>
+          <li><a href="./#about">About</a></li>
+          <li><a href="./#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="icon-btn theme-toggle" type="button" data-theme-toggle data-requires-js aria-label="Dark theme" aria-pressed="false">
+        <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+    </div>
+  </header>
 
-    <!-- ═══ PAGE HEADER ═══ -->
-    <header class="page-header">
-        <div class="hero-dots"></div>
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
+  <main id="main">
+    <span id="cue-new-tab" hidden>Opens in a new tab</span>
 
-        <div class="page-header-content fade-up d1">
-            <p class="page-header-eyebrow">Work</p>
-            <h1 class="page-header-title">Research</h1>
-            <p class="page-header-sub">
-                My research focuses on learning and reasoning in large output spaces, mechanistic interpretability,
-                and model distillation — advancing how models attend, reason, and generalize.
-            </p>
-
-            <!-- Research area chips -->
-            <div class="chip-row fade-up d2">
-                <span class="chip">Large Spaces</span>
-                <span class="chip">Mechanistic Interpretability</span>
-                <span class="chip">Reasoning Models</span>
-                <span class="chip">Reasoning Distillation</span>
-            </div>
+    <!-- ================================================================ PAGE HEAD -->
+    <section class="page-head" id="top" aria-labelledby="page-title">
+      <div class="wrap">
+        <p class="eyebrow"><span class="eyebrow__college">Debjyoti Saha Roy<span class="visually-hidden">,</span> <span aria-hidden="true">&middot;</span> </span>Northeastern University</p>
+        <h1 class="page-head__title" id="page-title">Research</h1>
+        <p class="lede">My research focuses on learning and reasoning in large output spaces, mechanistic interpretability, and model distillation, advancing how models attend, reason, and generalize.</p>
+        <ul class="chips" role="list" aria-label="Research areas">
+          <li>Large output spaces</li>
+          <li>Mechanistic interpretability</li>
+          <li>Reasoning models</li>
+          <li>Reasoning distillation</li>
+        </ul>
+        <!-- The three research themes as drawn on the home page (decoration from 64em; the text says it all). -->
+        <div class="page-head__motif" aria-hidden="true">
+          <svg class="visually-hidden" focusable="false" width="0" height="0"><defs><pattern id="pat-dot6" width="6" height="6" patternUnits="userSpaceOnUse"><circle class="v-dots" cx="3" cy="3" r="1.05"/></pattern><pattern id="pat-dot24" width="2.4" height="2.4" patternUnits="userSpaceOnUse"><circle class="v-dots" cx="1.2" cy="1.2" r=".62"/></pattern></defs></svg>
+          <svg class="theme__viz" viewBox="0 0 240 96" aria-hidden="true" focusable="false"><rect width="240" height="96" fill="url(#pat-dot6)"/><path class="v-line" d="M21 81 57 21M21 81l102 -30M21 81 201 33"/><circle class="v-ring" cx="21" cy="81" r="4.5"/><circle class="v-on" cx="57" cy="21" r="3"/><circle class="v-on" cx="123" cy="51" r="3"/><circle class="v-on" cx="201" cy="33" r="3"/></svg>
+          <svg class="theme__viz" viewBox="0 0 240 96" aria-hidden="true" focusable="false"><rect width="96" height="96" fill="url(#pat-dot24)"/><g class="v-teal"><circle cx="13.2" cy="27.6" r="2.6"/><circle cx="34.8" cy="61.2" r="2.6"/><circle cx="49.2" cy="18" r="2.6"/><circle cx="58.800" cy="73.2" r="2.6"/><circle cx="66" cy="44.4" r="2.6"/><circle cx="78" cy="56.4" r="2.6"/><circle cx="85.2" cy="30" r="2.6"/><circle cx="25.2" cy="85.2" r="2.6"/></g><text x="110" y="35">TOP 8 OF 1,600</text><text x="110" y="50">ATTENTION HEADS</text><text x="110" y="65">CHAPTER DECISIONS</text></svg>
+          <svg class="theme__viz" viewBox="0 0 240 96" aria-hidden="true" focusable="false"><rect width="96" height="96" fill="url(#pat-dot6)"/><rect x="150" y="18" width="60" height="60" fill="url(#pat-dot6)"/><path class="v-line" d="M100 48h42m-6 -5 6 5-6 5"/><g class="v-on"><circle cx="27" cy="33" r="3"/><circle cx="63" cy="21" r="3"/><circle cx="51" cy="69" r="3"/><circle cx="165" cy="39" r="3"/><circle cx="189" cy="27" r="3"/><circle cx="183" cy="63" r="3"/></g></svg>
         </div>
-    </header>
-
-    <!-- Gradient seam -->
-    <div class="hero-seam"></div>
-
-    <!-- ═══ PUBLICATIONS ═══ -->
-    <section class="page-section">
-        <div class="max-w-6xl mx-auto px-6">
-
-            <div class="flex items-end justify-between mb-1">
-                <div>
-                    <p class="section-eyebrow">Publications & Preprints</p>
-                    <h2 class="section-title">Selected Work</h2>
-                </div>
-            </div>
-            <hr class="section-header-rule mb-10">
-
-            <div id="publications-container" class="space-y-8">
-                <div class="text-center py-12 text-zinc-400 text-sm">Loading publications…</div>
-            </div>
-
-        </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <div id="footer"></div>
+    <!-- ================================================================ THE PROBLEM -->
+    <section class="section section--tint" id="problem" aria-labelledby="problem-title">
+      <div class="wrap section__grid">
+        <header class="section__head">
+          <p class="section__num" aria-hidden="true">01</p>
+          <h2 class="section__title" id="problem-title">The problem</h2>
+        </header>
+        <div class="section__body research__intro" data-reveal>
+          <p class="display">A few right answers, out of thousands to millions.</p>
+          <div class="prose">
+            <p>Modern language models are increasingly asked to select a small set of relevant outputs from extremely large candidate spaces: hundreds of thousands to millions of possibilities. Content categorization and recommendation, clinical coding with ICD codes, and legal document tagging all have this shape.</p>
+            <p>These settings are hard for two reasons. Data is severely sparse: most labels have only a handful of labeled examples. And the task combines broad candidate filtering with precise selection.</p>
+            <p>Large models are surprisingly strong here, zero-shot. Smaller models struggle. My work starts from that gap.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Modals -->
-    <div id="modals-container"></div>
-    <script src="assets/js/modals.js"></script>
+    <!-- ================================================================ APPROACH -->
+    <section class="section" id="approach" aria-labelledby="approach-title">
+      <div class="wrap section__grid">
+        <header class="section__head">
+          <p class="section__num" aria-hidden="true">02</p>
+          <h2 class="section__title" id="approach-title">Approach</h2>
+        </header>
+        <div class="section__body" data-reveal>
+          <ol class="steps" role="list">
+            <li>
+              <h3>Characterize how leading reasoning models succeed</h3>
+              <p>Mechanistically: which attention heads make each decision? I measure a head&rsquo;s causal effect by removing it and by transplanting it into another patient&rsquo;s note. In clinical coding with all 5,651 candidate codes in the prompt, a small, shared set of heads is necessary and sufficient on essentially every note. <a class="link" href="#mistill">MISTILL</a></p>
+            </li>
+            <li>
+              <h3>Transfer those mechanisms to smaller models</h3>
+              <p>Distill not only what a reasoning model writes but where it looks: besides the teacher&rsquo;s text, supervise where the student attends at the teacher&rsquo;s decision tokens. <a class="link" href="#mistill">MISTILL</a></p>
+            </li>
+            <li>
+              <h3>Make fine-tuning work better when label spaces are vast and supervision is sparse</h3>
+              <p>Attention initialization: plant label-specific attention with a learning-to-rank objective before end-to-end fine-tuning begins. <a class="link" href="#plant">PLANT</a></p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
 
-    <script>
-        fetch('components/modals.html')
-            .then(r => r.text())
-            .then(html => { document.getElementById('modals-container').innerHTML = html; });
+    <!-- ================================================================ PUBLICATIONS (full entries)
+         The same two papers appear in shorter form on index.html: keep both in sync. -->
+    <section class="section section--tint" id="publications" aria-labelledby="publications-title">
+      <div class="wrap section__grid">
+        <header class="section__head">
+          <p class="section__num" aria-hidden="true">03</p>
+          <h2 class="section__title" id="publications-title">Publications</h2>
+        </header>
+        <div class="section__body pubs">
 
-        fetch('components/navbar.html')
-            .then(r => r.text())
-            .then(d => { document.getElementById('navbar').innerHTML = d; })
-            .catch(e => console.error('Navbar error:', e));
+          <!-- ---------- PLANT ---------- -->
+          <article class="pub" id="plant" aria-labelledby="plant-title" data-reveal>
+            <header>
+              <p class="pub__venue"><img class="pub__mark" src="assets/img/neurips-mark.svg" width="24" height="24" loading="lazy" alt=""><strong>NeurIPS 2026<span class="visually-hidden">,</span></strong><span class="sep" aria-hidden="true">/</span><span>Main Track<span class="visually-hidden">,</span></span><span class="sep" aria-hidden="true">/</span><span>Poster</span></p>
+              <h3 class="pub__title" id="plant-title"><a href="https://arxiv.org/abs/2410.23066" target="_blank" rel="noopener" aria-describedby="cue-new-tab"><span>Don&rsquo;t Pay Attention, PLANT It:</span> <span class="pub__subtitle">Pretraining Attention via Learning-to-Rank</span></a></h3>
+              <p class="pub__authors"><span class="me">Debjyoti Saha Roy</span>, <a href="https://byronwallace.com/" target="_blank" rel="noopener">Byron C.&nbsp;Wallace<span class="visually-hidden"> (opens in a new tab)</span></a>, <a href="https://www.ccs.neu.edu/home/jaa/" target="_blank" rel="noopener">Javed A.&nbsp;Aslam<span class="visually-hidden"> (opens in a new tab)</span></a> <span class="muted">(Northeastern University)</span></p>
+            </header>
+            <div class="pub__actions">
+              <a class="btn btn--small btn--primary" href="plant/" target="_blank" rel="noopener">Project page <svg class="icon" aria-hidden="true"><use href="#i-arrow-out"/></svg><span class="visually-hidden"> of PLANT (opens in a new tab)</span></a>
+              <a class="action" href="https://arxiv.org/abs/2410.23066" target="_blank" rel="noopener"><svg class="icon icon--brand" aria-hidden="true"><use href="#i-arxiv"/></svg>arXiv<span class="visually-hidden"> page of PLANT (opens in a new tab)</span></a>
+              <a class="action" href="https://arxiv.org/pdf/2410.23066" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>PDF<span class="visually-hidden"> of PLANT (opens in a new tab)</span></a>
+              <a class="action" href="https://github.com/deb-official/plant" target="_blank" rel="noopener"><svg class="icon icon--brand" aria-hidden="true"><use href="#i-github"/></svg>Code<span class="visually-hidden"> for PLANT (opens in a new tab)</span></a>
+              <a class="action" href="./#talks"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>Talk<span class="visually-hidden"> on PLANT</span></a>
+              <a class="action" href="plant/media/plant-neurips2026-slides.pdf" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-slides"/></svg>Slides<span class="visually-hidden"> of PLANT (opens in a new tab)</span></a>
+              <a class="action" href="plant/media/plant-neurips2026-poster.pdf" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-poster"/></svg>Poster<span class="visually-hidden"> of PLANT (opens in a new tab)</span></a>
+              <a class="action" href="#plant-abstract"><svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg>Abstract<span class="visually-hidden"> of PLANT</span></a>
+              <a class="action" href="#plant-bibtex"><svg class="icon" aria-hidden="true"><use href="#i-quote"/></svg>BibTeX<span class="visually-hidden"> for PLANT</span></a>
+            </div>
+            <div class="pub__summary">
+              <p class="pub__tldr"><span class="pub__tldr-label">In one sentence<span class="visually-hidden">: </span></span>We plant label-specific attention before fine-tuning begins: a backbone-agnostic strategy for large label spaces that outperforms state-of-the-art methods, with the largest gains on rare labels.</p>
+              <ul class="results" role="list" aria-label="Results">
+                <li class="result"><span class="result__num">90.61 <small>P@1</small></span><span class="result__text">on <span class="nowrap">EUR-Lex</span>, against 88.74 for the best baseline (+1.87).<span class="result__src"><span class="visually-hidden">Source: </span>Table 3</span></span></li>
+                <li class="result"><span class="result__num">+7.2</span><span class="result__text"><span class="nowrap">Macro-AUC</span> points on <span class="nowrap">MIMIC-IV</span>: the average gain when PLANT is added to four fine-tuned LLM backbones (<span class="nowrap">Macro-F1</span> +3.0, <span class="nowrap">P@15</span> +3.1).<span class="result__src"><span class="visually-hidden">Source: </span>Table 1</span></span></li>
+                <li class="result"><span class="result__num">6.9&ndash;8.1<small>%</small></span><span class="result__text">F1 on held-out rare labels after training on common labels only; randomly initialized attention reaches 0.5&ndash;1.1%.<span class="result__src"><span class="visually-hidden">Source: </span>Figure 2, right</span></span></li>
+              </ul>
+              <p class="pub__limit"><span class="pub__tldr-label">Stated limit<span class="visually-hidden">: </span></span>A training-free LLM extraction baseline remains competitive on rarely seen labels.<span class="result__src"><span class="visually-hidden">Source: </span>Abstract</span></p>
+              <dl class="facts pub__facts">
+                <div><dt>Tasks</dt><dd>ICD coding (<span class="nowrap">MIMIC-IV</span>), legal topic classification (<span class="nowrap">EUR-Lex</span>), content recommendation (<span class="nowrap">Wiki10-31K</span>)</dd></div>
+                <div><dt>LLM backbones</dt><dd><span class="nowrap">Mistral-7B</span>, <span class="nowrap">Llama-3.1-8B</span>, <span class="nowrap">DeepSeek-V3</span>, <span class="nowrap">Phi-3-mini</span></dd></div>
+              </dl>
+            </div>
+            <!-- Figure 1 of the PLANT paper, drawn natively as inline SVG from the paper's TikZ source (a tall drawing for
+                 phones, a wide one for larger frames). Same labels, maths and colour roles as the paper: orange = MIG
+                 relevance, teal = nDCG swap weight, violet = ranking probability. figures.js plays it once when it scrolls
+                 into view; the groups carry data-step. -->
+            <figure class="fig" data-figure="plant">
+              <div class="fig__frame" role="img" aria-label="Diagram of PLANT attention. A multi-head attention module outside the LLM takes label embeddings as queries and the LLM&rsquo;s hidden states as keys and values, and outputs token attention scores S per label. For each label, the top-k tokens selected by mutual information gain are ranked by score. For a pair of tokens j and h, the ranking probability P of j over h is weighted by the change in nDCG at k if the two were swapped, the incorrect rank penalty. Summed over token pairs, minus the nDCG change times the log of that probability is the PLANT objective.">
+                <svg class="pfig pfig--tall" viewBox="0 0 340 660" style="--swap:116px" aria-hidden="true" focusable="false">
+                  <g class="step" data-step="1"><text class="t-mid t-lg c-muted" x="194" y="26">external attention on LLM outputs</text><rect class="box box--llm" x="1" y="86" width="49" height="70" rx="6"/><text class="t-mid t-lab" x="25.5" y="118">LLM</text><text class="t-mid" x="25.5" y="137"><tspan class="math">ℳ</tspan><tspan class="sub" dy="4">adapt</tspan><tspan dy="-4">&#8203;</tspan></text><path class="arrow" d="M50.0 121.0L58.3 109.2"/><polygon class="ah" points="62.0,104.0 55.6,108.0 60.3,111.4"/><path class="arrow" d="M50.0 121.0L58.3 132.8"/><polygon class="ah" points="62.0,138.0 60.3,130.6 55.6,134.0"/><rect class="box box--thin" x="62" y="54.0" width="60" height="32" rx="5"/><text class="t-mid" x="92.0" y="67.5"><tspan class="math">𝐐 = 𝐄</tspan></text><text class="t-mid t-dim" x="92.0" y="81.5"><tspan class="math">ℝ</tspan><tspan class="sub" dy="-4"><tspan class="math">|ℒ|</tspan><tspan class="math">×</tspan><tspan class="mi">h</tspan></tspan></text><rect class="box box--thin" x="62" y="88.0" width="60" height="32" rx="5"/><text class="t-mid" x="92.0" y="101.5"><tspan class="math">𝐊 = 𝐇</tspan><tspan class="sub" dy="3"><tspan class="mi">i</tspan></tspan><tspan dy="-3">&#8203;</tspan></text><text class="t-mid t-dim" x="92.0" y="115.5"><tspan class="math">ℝ</tspan><tspan class="sub" dy="-4"><tspan class="mi">n</tspan><tspan class="math">×</tspan><tspan class="mi">h</tspan></tspan></text><rect class="box box--thin" x="62" y="122.0" width="60" height="32" rx="5"/><text class="t-mid" x="92.0" y="135.5"><tspan class="math">𝐕 = 𝐇</tspan><tspan class="sub" dy="3"><tspan class="mi">i</tspan></tspan><tspan dy="-3">&#8203;</tspan></text><text class="t-mid t-dim" x="92.0" y="149.5"><tspan class="math">ℝ</tspan><tspan class="sub" dy="-4"><tspan class="mi">n</tspan><tspan class="math">×</tspan><tspan class="mi">h</tspan></tspan></text><path class="arrow" d="M122.0 70.0L126.4 70.0"/><polygon class="ah" points="132.0,70.0 125.0,67.1 125.0,72.9"/><path class="arrow" d="M122.0 104.0L126.4 104.0"/><polygon class="ah" points="132.0,104.0 125.0,101.1 125.0,106.9"/><path class="arrow" d="M122.0 138.0L126.4 138.0"/><polygon class="ah" points="132.0,138.0 125.0,135.1 125.0,140.9"/><rect class="box planted" x="132" y="48" width="116" height="112" rx="6"/><text class="t-mid t-lab" x="190" y="101">MultiHead−Attn.</text><text class="t-mid t-lg" x="190" y="122"><tspan class="mi">W</tspan><tspan class="sub" dy="4">attn</tspan><tspan dy="-4">&#8203;</tspan></text><path class="arrow" d="M248.0 104.0L252.4 104.0"/><polygon class="ah" points="258.0,104.0 251.0,101.1 251.0,106.9"/><rect class="box box--thin" x="258" y="88" width="70" height="32" rx="5"/><text class="t-mid" x="293" y="101.5"><tspan class="math">𝐒</tspan></text><text class="t-mid t-dim" x="293" y="115.5"><tspan class="math">ℝ</tspan><tspan class="sub" dy="-4"><tspan class="math">|ℒ|</tspan><tspan class="math">×</tspan><tspan class="mi">n</tspan></tspan></text><rect class="box--ext" x="54" y="38" width="282" height="130" rx="8"/><text class="t-lab t-end" x="284" y="186">token attn. per label</text><path class="arrow" d="M293.0 119.0L293.0 191.6"/><polygon class="ah" points="293.0,198.0 296.4,190.0 289.6,190.0"/></g>
+                  <g class="step" data-step="2"><rect class="box--outer" x="4" y="200" width="332" height="246" rx="8"/><rect class="box" x="33" y="292" width="42" height="26" rx="5"/><text class="t-mid" x="54.0" y="309.5"><tspan class="mi">t</tspan><tspan class="sub" dy="3"><tspan class="math">(1)</tspan></tspan><tspan dy="-3">&#8203;</tspan></text><g class="tokbox tokbox--j"><rect class="box" x="91" y="292" width="42" height="26" rx="5"/><text class="t-mid" x="112.0" y="309.5"><tspan class="mi">t</tspan><tspan class="sub" dy="3"><tspan class="math">(2)</tspan></tspan><tspan dy="-3">&#8203;</tspan></text><rect class="sel-j" x="86" y="287" width="52" height="36" rx="7"/></g><rect class="box" x="149" y="292" width="42" height="26" rx="5"/><text class="t-mid" x="170.0" y="309.5"><tspan class="mi">t</tspan><tspan class="sub" dy="3"><tspan class="math">(3)</tspan></tspan><tspan dy="-3">&#8203;</tspan></text><g class="tokbox tokbox--h"><rect class="box" x="207" y="292" width="42" height="26" rx="5"/><text class="t-mid" x="228.0" y="309.5"><tspan class="mi">t</tspan><tspan class="sub" dy="3"><tspan class="math">(4)</tspan></tspan><tspan dy="-3">&#8203;</tspan></text><rect class="sel-h" x="202" y="287" width="52" height="36" rx="7"/></g><rect class="box" x="265" y="292" width="42" height="26" rx="5"/><text class="t-mid" x="286.0" y="309.5"><tspan class="mi">t</tspan><tspan class="sub" dy="3"><tspan class="math">(5)</tspan></tspan><tspan dy="-3">&#8203;</tspan></text><text class="t-mid t-lg" x="170" y="420">Predicted ranking on <tspan class="math">𝒯</tspan><tspan class="sub" dy="4"><tspan class="mi">l</tspan></tspan><tspan dy="-4">&#8203;</tspan> (by <tspan class="mi">s</tspan><tspan class="sub" dy="3"><tspan class="mi">lj</tspan></tspan><tspan dy="-3">&#8203;</tspan>)</text><text class="t-mid t-lg c-orange" x="170" y="472">MIG relevance <tspan class="mi">r</tspan><tspan class="sub" dy="3"><tspan class="mi">lj</tspan></tspan><tspan dy="-3">&#8203;</tspan> selects</text><text class="t-mid t-lg c-orange" x="170" y="492">top−k tokens per label (<tspan class="math">𝒯</tspan><tspan class="sub" dy="4"><tspan class="mi">l</tspan></tspan><tspan dy="-4">&#8203;</tspan>)</text></g>
+                  <g class="step" data-step="3"><text class="t-mid t-lg" x="170" y="226">incorrect rank penalty</text><rect class="box--ndcg" x="122" y="236" width="96" height="24" rx="5"/><text class="t-mid" x="170" y="253"><tspan class="math">|Δ</tspan>nDCG<tspan class="math">@</tspan><tspan class="mi">k</tspan><tspan class="math">|</tspan><tspan class="sub" dy="4"><tspan class="mi">jh</tspan></tspan><tspan dy="-4">&#8203;</tspan></text><path class="arrow arrow--teal" d="M123.6 280.0Q170.0 260.4 216.4 280.0"/><polygon class="ah ah--teal" points="112.0,285.0 121.7,284.5 118.5,277.7"/><polygon class="ah ah--teal" points="228.0,285.0 221.5,277.7 218.3,284.5"/><text class="t-mid" x="90.0" y="339"><tspan class="math">𝒋</tspan></text><text class="t-mid" x="250.0" y="339"><tspan class="math">𝒉</tspan></text></g>
+                  <g class="step" data-step="4"><rect class="box--prob" x="58" y="354" width="224" height="30" rx="6"/><text class="t-mid" x="170" y="374"><tspan class="mi">P</tspan><tspan class="math">(</tspan><tspan class="mi">j</tspan><tspan class="math"> ≻ </tspan><tspan class="mi">h</tspan><tspan class="math">) = (1 + </tspan><tspan class="mi">e</tspan><tspan class="sub" dy="-5"><tspan class="math">−</tspan><tspan class="mi">σ</tspan><tspan class="math">(</tspan><tspan class="mi">s</tspan><tspan class="sub" dy="2"><tspan class="mi">lj</tspan></tspan><tspan dy="-2"><tspan class="math"> − </tspan></tspan><tspan class="mi">s</tspan><tspan class="sub" dy="2"><tspan class="mi">lh</tspan></tspan><tspan dy="-2"><tspan class="math">)</tspan></tspan></tspan><tspan dy="5"><tspan class="math">)</tspan></tspan><tspan class="sub" dy="-5"><tspan class="math">−1</tspan></tspan><tspan dy="5">&#8203;</tspan></text><path class="arrow arrow--violet" d="M170.0 354.0L118.4 327.3"/><polygon class="ah ah--violet" points="112.0,324.0 118.3,331.5 121.7,324.8"/><path class="arrow arrow--violet" d="M170.0 354.0L221.6 327.3"/><polygon class="ah ah--violet" points="228.0,324.0 218.3,324.8 221.7,331.5"/></g>
+                  <g class="step" data-step="5"><rect class="box--sum" x="12" y="524" width="44" height="48" rx="6"/><text class="t-mid math" x="34" y="557" style="font-size:24px">∑</text><text class="t-mid t-lab c-orange" x="36" y="589">token pairs</text><text class="t-mid t-lab c-orange" x="36" y="604">from <tspan class="math">𝒯</tspan><tspan class="sub" dy="4"><tspan class="mi">l</tspan></tspan><tspan dy="-4">&#8203;</tspan></text><clipPath id="pf-clip-t"><rect x="66" y="524" width="268" height="48" rx="6"/></clipPath><g clip-path="url(#pf-clip-t)"><rect class="fill-teal" x="66" y="524" width="139.4" height="48"/><rect class="fill-violet" x="205.4" y="524" width="128.6" height="48"/></g><rect class="frame" x="66" y="524" width="268" height="48" rx="6"/><text class="t-mid" x="135.68" y="553"><tspan class="math">− </tspan><tspan class="math">|Δ</tspan>nDCG<tspan class="math">@</tspan><tspan class="mi">k</tspan><tspan class="math">|</tspan><tspan class="sub" dy="4"><tspan class="mi">jh</tspan></tspan><tspan dy="-4">&#8203;</tspan></text><text class="t-mid" x="269.68" y="553">log<tspan class="sub" dy="3"><tspan class="math">2</tspan></tspan><tspan dy="-3">&#8203;</tspan> <tspan class="mi">P</tspan><tspan class="math">(</tspan><tspan class="mi">j</tspan><tspan class="math"> ≻ </tspan><tspan class="mi">h</tspan><tspan class="math">)</tspan></text><path class="brace-line" d="M12 614q0 9 9 9H164.0q9 0 9 9q0 -9 9 -9H325q9 0 9 -9"/><text class="t-mid t-lg" x="173" y="648">PLANT objective</text></g>
+                </svg>
+                <svg class="pfig pfig--wide" viewBox="0 0 980 320" style="--swap:100px" aria-hidden="true" focusable="false">
+                  <g class="step" data-step="1"><rect class="box box--llm" x="8" y="136" width="56" height="70" rx="6"/><text class="t-mid t-lg" x="36" y="168">LLM</text><text class="t-mid" x="36" y="188"><tspan class="math">ℳ</tspan><tspan class="sub" dy="4">adapt</tspan><tspan dy="-4">&#8203;</tspan></text><path class="arrow" d="M64.0 171.0L86.5 157.3"/><polygon class="ah" points="92.0,154.0 83.4,155.3 86.9,161.0"/><path class="arrow" d="M64.0 171.0L86.6 185.5"/><polygon class="ah" points="92.0,189.0 87.1,181.8 83.5,187.5"/><rect class="box box--thin" x="92" y="103.0" width="70" height="32" rx="5"/><text class="t-mid" x="127.0" y="116.5"><tspan class="math">𝐐 = 𝐄</tspan></text><text class="t-mid t-dim" x="127.0" y="130.5"><tspan class="math">ℝ</tspan><tspan class="sub" dy="-4"><tspan class="math">|ℒ|</tspan><tspan class="math">×</tspan><tspan class="mi">h</tspan></tspan></text><rect class="box box--thin" x="92" y="138.0" width="70" height="32" rx="5"/><text class="t-mid" x="127.0" y="151.5"><tspan class="math">𝐊 = 𝐇</tspan><tspan class="sub" dy="3"><tspan class="mi">i</tspan></tspan><tspan dy="-3">&#8203;</tspan></text><text class="t-mid t-dim" x="127.0" y="165.5"><tspan class="math">ℝ</tspan><tspan class="sub" dy="-4"><tspan class="mi">n</tspan><tspan class="math">×</tspan><tspan class="mi">h</tspan></tspan></text><rect class="box box--thin" x="92" y="173.0" width="70" height="32" rx="5"/><text class="t-mid" x="127.0" y="186.5"><tspan class="math">𝐕 = 𝐇</tspan><tspan class="sub" dy="3"><tspan class="mi">i</tspan></tspan><tspan dy="-3">&#8203;</tspan></text><text class="t-mid t-dim" x="127.0" y="200.5"><tspan class="math">ℝ</tspan><tspan class="sub" dy="-4"><tspan class="mi">n</tspan><tspan class="math">×</tspan><tspan class="mi">h</tspan></tspan></text><path class="arrow" d="M162.0 119.0L183.6 119.0"/><polygon class="ah" points="190.0,119.0 182.0,115.6 182.0,122.4"/><path class="arrow" d="M162.0 154.0L183.6 154.0"/><polygon class="ah" points="190.0,154.0 182.0,150.6 182.0,157.4"/><path class="arrow" d="M162.0 189.0L183.6 189.0"/><polygon class="ah" points="190.0,189.0 182.0,185.6 182.0,192.4"/><rect class="box planted" x="190" y="96" width="120" height="116" rx="6"/><text class="t-mid t-md" x="250" y="151">MultiHead−Attn.</text><text class="t-mid t-lg" x="250" y="173"><tspan class="mi">W</tspan><tspan class="sub" dy="4">attn</tspan><tspan dy="-4">&#8203;</tspan></text><path class="arrow" d="M310.0 154.0L331.6 154.0"/><polygon class="ah" points="338.0,154.0 330.0,150.6 330.0,157.4"/><rect class="box box--thin" x="338" y="138" width="74" height="32" rx="5"/><text class="t-mid" x="375" y="151.5"><tspan class="math">𝐒</tspan></text><text class="t-mid t-dim" x="375" y="165.5"><tspan class="math">ℝ</tspan><tspan class="sub" dy="-4"><tspan class="math">|ℒ|</tspan><tspan class="math">×</tspan><tspan class="mi">n</tspan></tspan></text><text class="t-mid t-lab" x="375" y="188">token attn.</text><text class="t-mid t-lab" x="375" y="203">per label</text><rect class="box--ext" x="82" y="86" width="340" height="136" rx="8"/><text class="t-mid t-lg c-muted" x="252" y="74">external attention on LLM outputs</text><path class="arrow" d="M412.0 154.0L439.6 154.0"/><polygon class="ah" points="446.0,154.0 438.0,150.6 438.0,157.4"/></g>
+                  <g class="step" data-step="2"><rect class="box--outer" x="448" y="18" width="268" height="262" rx="8"/><rect class="box" x="462" y="116" width="40" height="26" rx="5"/><text class="t-mid" x="482.0" y="133.5"><tspan class="mi">t</tspan><tspan class="sub" dy="3"><tspan class="math">(1)</tspan></tspan><tspan dy="-3">&#8203;</tspan></text><g class="tokbox tokbox--j"><rect class="box" x="512" y="116" width="40" height="26" rx="5"/><text class="t-mid" x="532.0" y="133.5"><tspan class="mi">t</tspan><tspan class="sub" dy="3"><tspan class="math">(2)</tspan></tspan><tspan dy="-3">&#8203;</tspan></text><rect class="sel-j" x="507" y="111" width="50" height="36" rx="7"/></g><rect class="box" x="562" y="116" width="40" height="26" rx="5"/><text class="t-mid" x="582.0" y="133.5"><tspan class="mi">t</tspan><tspan class="sub" dy="3"><tspan class="math">(3)</tspan></tspan><tspan dy="-3">&#8203;</tspan></text><g class="tokbox tokbox--h"><rect class="box" x="612" y="116" width="40" height="26" rx="5"/><text class="t-mid" x="632.0" y="133.5"><tspan class="mi">t</tspan><tspan class="sub" dy="3"><tspan class="math">(4)</tspan></tspan><tspan dy="-3">&#8203;</tspan></text><rect class="sel-h" x="607" y="111" width="50" height="36" rx="7"/></g><rect class="box" x="662" y="116" width="40" height="26" rx="5"/><text class="t-mid" x="682.0" y="133.5"><tspan class="mi">t</tspan><tspan class="sub" dy="3"><tspan class="math">(5)</tspan></tspan><tspan dy="-3">&#8203;</tspan></text><text class="t-mid t-lg" x="582" y="252">Predicted ranking on <tspan class="math">𝒯</tspan><tspan class="sub" dy="4"><tspan class="mi">l</tspan></tspan><tspan dy="-4">&#8203;</tspan> (by <tspan class="mi">s</tspan><tspan class="sub" dy="3"><tspan class="mi">lj</tspan></tspan><tspan dy="-3">&#8203;</tspan>)</text><text class="t-mid t-lg c-orange" x="582" y="306">MIG relevance <tspan class="mi">r</tspan><tspan class="sub" dy="3"><tspan class="mi">lj</tspan></tspan><tspan dy="-3">&#8203;</tspan> selects top−k tokens per label (<tspan class="math">𝒯</tspan><tspan class="sub" dy="4"><tspan class="mi">l</tspan></tspan><tspan dy="-4">&#8203;</tspan>)</text></g>
+                  <g class="step" data-step="3"><text class="t-mid t-lg" x="582" y="46">incorrect rank penalty</text><rect class="box--ndcg" x="534" y="58" width="96" height="24" rx="5"/><text class="t-mid" x="582" y="75"><tspan class="math">|Δ</tspan>nDCG<tspan class="math">@</tspan><tspan class="mi">k</tspan><tspan class="math">|</tspan><tspan class="sub" dy="4"><tspan class="mi">jh</tspan></tspan><tspan dy="-4">&#8203;</tspan></text><path class="arrow arrow--teal" d="M542.0 103.6Q582.0 82.6 622.0 103.6"/><polygon class="ah ah--teal" points="532.0,109.0 541.7,107.6 537.8,101.1"/><polygon class="ah ah--teal" points="632.0,109.0 626.2,101.1 622.3,107.6"/><text class="t-mid" x="510.0" y="163"><tspan class="math">𝒋</tspan></text><text class="t-mid" x="654.0" y="163"><tspan class="math">𝒉</tspan></text></g>
+                  <g class="step" data-step="4"><rect class="box--prob" x="482" y="180" width="200" height="30" rx="6"/><text class="t-mid" x="582" y="200"><tspan class="mi">P</tspan><tspan class="math">(</tspan><tspan class="mi">j</tspan><tspan class="math"> ≻ </tspan><tspan class="mi">h</tspan><tspan class="math">) = (1 + </tspan><tspan class="mi">e</tspan><tspan class="sub" dy="-5"><tspan class="math">−</tspan><tspan class="mi">σ</tspan><tspan class="math">(</tspan><tspan class="mi">s</tspan><tspan class="sub" dy="2"><tspan class="mi">lj</tspan></tspan><tspan dy="-2"><tspan class="math"> − </tspan></tspan><tspan class="mi">s</tspan><tspan class="sub" dy="2"><tspan class="mi">lh</tspan></tspan><tspan dy="-2"><tspan class="math">)</tspan></tspan></tspan><tspan dy="5"><tspan class="math">)</tspan></tspan><tspan class="sub" dy="-5"><tspan class="math">−1</tspan></tspan><tspan dy="5">&#8203;</tspan></text><path class="arrow arrow--violet" d="M582.0 180.0L538.1 151.9"/><polygon class="ah ah--violet" points="532.0,148.0 537.5,156.0 541.6,149.7"/><path class="arrow arrow--violet" d="M582.0 180.0L625.9 151.9"/><polygon class="ah ah--violet" points="632.0,148.0 622.4,149.7 626.5,156.0"/></g>
+                  <g class="step" data-step="5"><rect class="box--sum" x="724" y="130" width="44" height="48" rx="6"/><text class="t-mid math" x="746" y="163" style="font-size:24px">∑</text><text class="t-lab c-orange" x="724" y="196">token pairs</text><text class="t-lab c-orange" x="724" y="211">from <tspan class="math">𝒯</tspan><tspan class="sub" dy="4"><tspan class="mi">l</tspan></tspan><tspan dy="-4">&#8203;</tspan></text><clipPath id="pf-clip-w"><rect x="774" y="130" width="202" height="48" rx="6"/></clipPath><g clip-path="url(#pf-clip-w)"><rect class="fill-teal" x="774" y="130" width="105.04" height="48"/><rect class="fill-violet" x="879.04" y="130" width="96.96" height="48"/></g><rect class="frame" x="774" y="130" width="202" height="48" rx="6"/><text class="t-mid t-obj" x="828" y="159"><tspan class="math">− </tspan><tspan class="math">|Δ</tspan>nDCG<tspan class="math">@</tspan><tspan class="mi">k</tspan><tspan class="math">|</tspan><tspan class="sub" dy="4"><tspan class="mi">jh</tspan></tspan><tspan dy="-4">&#8203;</tspan></text><text class="t-mid t-obj" x="927.5" y="159">log<tspan class="sub" dy="3"><tspan class="math">2</tspan></tspan><tspan dy="-3">&#8203;</tspan> <tspan class="mi">P</tspan><tspan class="math">(</tspan><tspan class="mi">j</tspan><tspan class="math"> ≻ </tspan><tspan class="mi">h</tspan><tspan class="math">)</tspan></text><path class="brace-line" d="M724 222q0 9 9 9H841q9 0 9 9q0 -9 9 -9H967q9 0 9 -9"/><text class="t-mid t-lg" x="850" y="256">PLANT objective</text></g>
+                </svg>
+              </div>
+              <div class="fig__tools">
+                <button class="action" type="button" data-figure-play data-requires-js><svg class="icon" aria-hidden="true"><use href="#i-replay"/></svg>Replay<span class="visually-hidden"> the PLANT figure</span></button>
+                <a class="action" href="https://arxiv.org/pdf/2410.23066#page=2" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>In the paper, p.&nbsp;2<span class="visually-hidden"> of PLANT (opens in a new tab)</span></a>
+              </div>
+              <figcaption class="fig__caption"><b>Figure 1 of the paper.</b> PLANT attention. A multi-head attention module external to the LLM takes label embeddings as queries and the LLM&rsquo;s final hidden states as keys and values. Before fine-tuning, it is trained to rank each label&rsquo;s top-k tokens (selected by mutual information gain), with every swapped pair weighted by its change in nDCG@k; that objective initializes the attention.</figcaption>
+            </figure>
+            <div class="pub__block" id="plant-abstract">
+              <h4>Abstract</h4>
+              <p>State-of-the-art Extreme Multi-Label Text Classification models rely on multi-label attention to focus on key tokens in input text, but learning good attention weights is challenging. We introduce PLANT (Pretrained and Leveraged AtteNTion), a plug-and-play strategy for initializing the label-attention module that operates on top of an LLM&rsquo;s output representations. PLANT works by planting label-specific attention using a Learning-to-Rank model trained on mutual information gain, before end-to-end fine-tuning. This architecture-agnostic approach integrates with LLM backbones (e.g., <span class="nowrap">Mistral-7B</span>, <span class="nowrap">Llama-3.1-8B</span>, <span class="nowrap">DeepSeek-V3</span>, and <span class="nowrap">Phi-3-mini</span>). PLANT outperforms SOTA methods across tasks like ICD coding, legal topic classification, and content recommendation, and improves fine-tuned LLMs in controlled comparisons outside the medical domain. Gains are largest on rare labels, although a training-free LLM extraction baseline remains competitive on rarely seen labels. Ablation studies confirm that attention initialization is a key driver of these gains.</p>
+            </div>
+            <div class="pub__block bibtex" id="plant-bibtex">
+              <h4>BibTeX</h4>
+              <pre tabindex="0" role="region" aria-label="BibTeX for PLANT"><code>@inproceedings{saharoy2026plant,
+  title = {Don't Pay Attention, {PLANT} It:
+    Pretraining Attention via
+    Learning-to-Rank},
+  author = {Saha Roy, Debjyoti and
+    Wallace, Byron C. and
+    Aslam, Javed A.},
+  booktitle = {Advances in Neural Information
+    Processing Systems (NeurIPS)},
+  year = {2026},
+  note = {arXiv:2410.23066}
+}</code></pre>
+              <p class="bibtex__bar">
+                <button class="btn btn--small" type="button" data-copy data-requires-js><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span data-copy-label>Copy BibTeX</span><span class="visually-hidden"> for PLANT</span></button>
+                <span class="status" role="status" aria-live="polite"></span>
+              </p>
+            </div>
+          </article>
 
-        fetch('components/footer.html')
-            .then(r => r.text())
-            .then(d => {
-                document.getElementById('footer').innerHTML = d;
-                // Run after footer is injected into the DOM
-                initEmailCanvas();
-            })
-            .catch(e => console.error('Footer error:', e));
-    </script>
+          <!-- ---------- MISTILL (a preprint: no venue) ---------- -->
+          <article class="pub" id="mistill" aria-labelledby="mistill-title" data-reveal>
+            <header>
+              <p class="pub__venue"><strong>Preprint<span class="visually-hidden">,</span></strong><span class="sep" aria-hidden="true">/</span><span>arXiv:2606.06840<span class="visually-hidden">,</span></span><span class="sep" aria-hidden="true">/</span><span>cs.CL</span></p>
+              <h3 class="pub__title" id="mistill-title"><a href="https://arxiv.org/abs/2606.06840" target="_blank" rel="noopener" aria-describedby="cue-new-tab"><span>Characterize Then Distill:</span> <span class="pub__subtitle">Mechanistic Reasoning in Large Output Spaces</span></a></h3>
+              <p class="pub__authors"><span class="me">Debjyoti Saha Roy</span> <span class="muted">(sole author)</span></p>
+            </header>
+            <div class="pub__actions">
+              <a class="btn btn--small btn--primary" href="https://arxiv.org/abs/2606.06840" target="_blank" rel="noopener"><svg class="icon icon--brand" aria-hidden="true"><use href="#i-arxiv"/></svg>arXiv<span class="visually-hidden"> page of MISTILL (opens in a new tab)</span></a>
+              <a class="action" href="https://arxiv.org/pdf/2606.06840" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>PDF<span class="visually-hidden"> of MISTILL (opens in a new tab)</span></a>
+              <a class="action" href="#mistill-abstract"><svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg>Abstract<span class="visually-hidden"> of MISTILL</span></a>
+              <a class="action" href="#mistill-bibtex"><svg class="icon" aria-hidden="true"><use href="#i-quote"/></svg>BibTeX<span class="visually-hidden"> for MISTILL</span></a>
+              <span class="action action--soon"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>Code: coming soon</span>
+            </div>
+            <div class="pub__summary">
+              <p class="pub__tldr"><span class="pub__tldr-label">In two sentences<span class="visually-hidden">: </span></span>Reasoning-trained language models can pick a document&rsquo;s few labels from thousands of candidates, zero-shot. We ask which components make these choices, and whether a student can be taught where to look as well as what to write.</p>
+              <ul class="results" role="list" aria-label="Findings">
+                <li class="result"><span class="result__num">8 <small>of 1,600</small></span><span class="result__text">attention heads, the top-ranked for chapter decisions: ablating them removes 0.62 of the model&rsquo;s preference for a code&rsquo;s chapter, and copying them into another patient&rsquo;s note (<span class="nowrap">knock-in</span>) restores 0.67 of it (teacher: <span class="nowrap">Qwen3-14B</span>). A small, shared set of heads is necessary and sufficient on essentially every note.<span class="result__src"><span class="visually-hidden">Source: </span>Page 2; Table 1; Abstract</span></span></li>
+                <li class="result"><span class="result__num">nearly 2&times;</span><span class="result__text">In a student from another model family, its own top heads restore nearly twice as much of the choice between similar codes after MISTILL as before; chain-of-thought distillation alone adds under a third.<span class="result__src"><span class="visually-hidden">Source: </span>Abstract</span></span></li>
+              </ul>
+              <p class="pub__limit"><span class="pub__tldr-label">On the task<span class="visually-hidden">: </span></span>No task difference from chain-of-thought distillation is detected at matched precision.<span class="result__src"><span class="visually-hidden">Source: </span>Abstract</span></p>
+              <dl class="facts pub__facts">
+                <div><dt>Setting</dt><dd>Clinical coding of <span class="nowrap">MIMIC-IV</span> discharge summaries, with all 5,651 candidate <span class="nowrap">ICD-10-CM</span> codes in the prompt. Each coding decision is one token.<span class="result__src"><span class="visually-hidden">Source: </span>Abstract</span></dd></div>
+              </dl>
+            </div>
+            <figure class="fig" data-figure="mistill" id="fig-mistill">
+              <!-- MISTILL Figure 1 (the compact figure, paper p. 2), drawn natively in HTML + CSS from the paper's TikZ
+                   source. THIS FILE'S TEXT IS THE FIGURE'S ONE STRING TABLE: every layout (wide row, wrapped phone layout, the
+                   enlarged copy in the dialog) renders this same markup, and every label, code and number is the paper's.
+                   Do not borrow wording from the full version (Appendix C, Fig. 2): the two figures word things differently.
+                   Structure: .mfig holds one .mfig__panel per panel (data-panel names it).
+                   figures.js draws the loop-back arrow and plays the emission of N18.9 once; without JS, and under reduced
+                   motion, the figure is complete and static (that finished state is the paper's figure). -->
+              <div class="fig__frame">
+                <div class="mfig">
+                  <div class="mfig__panel" data-panel="prompt" role="group" aria-label="Prompt">
+                    <p class="mfig__head"><b>Prompt</b> <span class="mfig__ph">[discharge summary]</span> <span>+ the inventory: all 5,651 ICD-10-CM codes, one line each</span></p>
+                    <div class="inv-wrap">
+                      <div class="inv">
+                        <div class="inv__row"><span>I10</span><span>Essential (primary) hypertension</span><span></span></div>
+                        <div class="inv__row inv__row--n" data-row="near"><span>N18.1</span><span>Chronic kidney disease, stage 1</span><span class="inv__mark k-red">near-miss</span></div>
+                        <div class="inv__row inv__row--n" data-row="emit"><span>N18.9</span><span>Chronic kidney disease, unspecified</span><span class="inv__mark k-green"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>emitted</span></div>
+                        <div class="inv__row inv__more"><span><svg class="inv__vdots" viewBox="0 0 4 14" aria-hidden="true"><circle cx="2" cy="2" r="1.2"/><circle cx="2" cy="7" r="1.2"/><circle cx="2" cy="12" r="1.2"/></svg></span><span>(5,648 more lines)</span><span></span></div>
+                      </div>
+                      <p class="region"><span><b>the region of the letter N:</b> every line whose code starts with N. <i>Region readers</i> read here (Sec.&nbsp;3.3)</span></p>
+                    </div>
+                  </div>
+                  <div class="mfig__panel" data-panel="trace" role="group" aria-label="Reasoning trace">
+                    <p class="mfig__head"><b>Reasoning trace</b> <span class="mfig__keys"><span class="k-p1"><b>P1</b> chapter: which region</span><span class="k-p2"><b>P2</b> character: which code in it</span><span class="k-p2c"><b>P2C</b> contrastive: against the near-miss</span></span></p>
+                    <div class="trace" data-trace>
+                      <p class="trace__loop"><span><code>N18.9</code> departs from its <i>near-miss</i> <code>N18.1</code>, named earlier; a head re-reads it (<i>loop-back</i>, Sec.&nbsp;3.3)</span></p>
+                      <svg class="trace__arrow" aria-hidden="true" focusable="false"><path d=""/><path class="head" d=""/></svg>
+                      <!-- Token order matters: the wide layout puts these 14 tokens in the 14 columns of .trace, and
+                           .note--null, .note--locus and .note--emit (site.css 12) sit under columns 4, 7 and 10-14. -->
+                      <span class="tok tok--prose"><span class="tok__chip"><span aria-hidden="true">&middot;&middot;&middot;</span><span class="visually-hidden">(prose)</span></span></span>
+                      <span class="tok tok--near" data-tok="near"><span class="tok__chip">N18.1</span></span>
+                      <span class="tok tok--prose"><span class="tok__chip"><span aria-hidden="true">&middot;&middot;&middot;</span><span class="visually-hidden">(prose)</span></span></span>
+                      <span class="tok tok--null"><span class="tok__chip">the</span></span>
+                      <span class="tok tok--prose"><span class="tok__chip"><span aria-hidden="true">&middot;&middot;&middot;</span><span class="visually-hidden">(prose)</span></span></span>
+                      <span class="tok tok--prose"><span class="tok__chip"><span aria-hidden="true">&middot;&middot;&middot;</span><span class="visually-hidden">(prose)</span></span></span>
+                      <span class="tok tok--locus"><span class="tok__chip">kidney</span></span>
+                      <span class="tok"><span class="tok__chip">disease,</span></span>
+                      <span class="tok"><span class="tok__chip">unspecified</span></span>
+                      <span class="tokgroup">
+                        <span class="tok tok--code tok--p1"><span class="tok__tag k-p1">P1</span><span class="tok__chip"><span class="vspace" aria-hidden="true"></span><span class="visually-hidden">space </span>N</span></span>
+                        <span class="tok tok--code tok--p2"><span class="tok__tag k-p2">P2</span><span class="tok__chip">1</span></span>
+                        <span class="tok tok--code tok--p2"><span class="tok__tag k-p2">P2</span><span class="tok__chip">8</span></span>
+                        <span class="tok tok--code tok--dot"><span class="tok__chip">.</span></span>
+                        <span class="tok tok--code tok--p2c" data-tok="last"><span class="tok__tag k-p2c">P2C</span><span class="tok__chip">9</span></span>
+                      </span>
+                      <div class="notes">
+                        <p class="note note--null k-null"><span class="note__ref" aria-hidden="true">the</span><span><span class="visually-hidden">At &ldquo;the&rdquo;: </span>NULL event: a prose position, random target (calibration)</span></p>
+                        <p class="note note--locus k-gold"><span class="note__ref" aria-hidden="true">kidney</span><span><span class="visually-hidden">At &ldquo;kidney&rdquo;: </span><i>locus</i>: the chapter can first be elicited here, by the <i>prose-time set</i> (Sec.&nbsp;3.4)</span></p>
+                        <p class="note note--emit k-p1"><svg class="brace" viewBox="0 0 190 10" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M1 0Q1 5 8 5H88Q95 5 95 10Q95 5 102 5H182Q189 5 189 0"/></svg><span class="note__ref" aria-hidden="true">N18.9</span><span><span class="visually-hidden">At N18.9: </span>the <i>emission set</i> carries the chapter decision here</span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="fig__tools">
+                <a class="action" href="#mistill-terms"><svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg>Terms and full figure</a>
+                <a class="action" href="https://arxiv.org/pdf/2606.06840#page=2" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>In the paper, p.&nbsp;2<span class="visually-hidden"> of MISTILL (opens in a new tab)</span></a>
+              </div>
+              <figcaption class="fig__caption"><b>Figure 1 of the paper.</b> A coding decision is one token: writing <code>N18.9</code>, the model makes one decision per token of the code. Illustrative (public ICD-10-CM codes and descriptions; placeholder note and reasoning).</figcaption>
+            </figure>
+            <div class="pub__block" id="mistill-terms">
+              <h4>Terms used in the figure and the paper</h4>
+              <!-- The glossary printed under Figure 1 in the paper, verbatim. The pointer "Fig. 2, bottom" leads to the
+                   "Testing a set of heads" panel of the full figure. -->
+              <dl class="glossary">
+                <div><dt>decision margin</dt><dd>: how strongly the model prefers the token it wrote over its competitors (Sec.&nbsp;2.2)</dd></div>
+                <div><dt>global set</dt><dd>: the same top-<i>k</i> heads for every note, one ranking per kind of decision (Sec.&nbsp;2.3)</dd></div>
+                <div><dt>necessity</dt><dd> (mean-ablation): the share of the margin lost when a set of heads is replaced by its average output</dd></div>
+                <div><dt>span bucket</dt><dd>: a stretch of text (an inventory line, a note window, a trace sentence) over which attention is summed (Sec.&nbsp;4.1)</dd></div>
+                <div><dt>recovery</dt><dd> (<span class="nowrap">knock-in</span>; <a class="link" href="#mfull-test" data-goto="mfull-test">Fig.&nbsp;2, bottom</a>): the share of the decision restored when the set&rsquo;s outputs are copied into another note</dd></div>
+                <div><dt>own-heads recovery</dt><dd> (M4): the recovery of a student&rsquo;s own top heads, found after training; M1 and M4 are defined in Sec.&nbsp;4.2</dd></div>
+              </dl>
+            </div>
+            <div class="pub__block" id="mistill-full">
+              <h4>The full figure, down to how a set of heads is tested (Appendix C, Fig. 2)</h4>
+              <!-- MISTILL Figure 2 (the full version of Figure 1; Appendix C, paper p. 23), drawn natively from the paper's
+                   TikZ source. THIS FILE'S TEXT IS THE FIGURE'S ONE STRING TABLE; its wording differs from the compact
+                   Figure 1 on purpose (seven inventory lines, Phase 1/2, ">= 2 nats"). Never mix the two.
+                   Five panels. In a wide frame they are laid out as in the paper; in a narrow one (phones) data-stepped shows
+                   one panel per step, chosen from the index above it (figures.js moves .is-current; no JS = all stacked). -->
+              <figure class="fig" data-figure="mistill-full">
+                <div class="fig__frame">
+                  <p class="mfig__index" data-requires-js>
+                    <button class="action" type="button" data-goto="mfull-prompt" aria-controls="mfull-prompt" aria-current="true">1 Prompt</button>
+                    <button class="action" type="button" data-goto="mfull-trace" aria-controls="mfull-trace">2 Reasoning trace</button>
+                    <button class="action" type="button" data-goto="mfull-events" aria-controls="mfull-events">3 Decision events</button>
+                    <button class="action" type="button" data-goto="mfull-decision" aria-controls="mfull-decision">4 One decision</button>
+                    <button class="action" type="button" data-goto="mfull-test" aria-controls="mfull-test">5 Testing a set of heads</button>
+                  </p>
+                  <div class="mfig mfig--full" data-stepped>
+                    <svg class="mfig__link" aria-hidden="true" focusable="false"><path d=""/><path class="head" d=""/></svg>
+                    <!-- (a) the prompt -->
+                    <div class="mfig__panel is-current" id="mfull-prompt" data-panel="prompt" role="group" aria-label="Prompt">
+                      <p class="mfig__head"><b>Prompt</b> <span class="mfig__ph">[discharge summary]</span> <span>+ the ICD-10-CM inventory: all 5,651 codes, one line each</span></p>
+                      <div class="inv-wrap">
+                        <div class="inv">
+                          <div class="inv__row"><span>E11.9</span><span>Type 2 diabetes mellitus without complications</span><span></span></div>
+                          <div class="inv__row"><span>I10</span><span>Essential (primary) hypertension</span><span></span></div>
+                          <div class="inv__row inv__row--n"><span>N17.9</span><span>Acute kidney failure, unspecified</span><span></span></div>
+                          <div class="inv__row inv__row--n"><span>N18.1</span><span>Chronic kidney disease, stage 1</span><span class="inv__mark k-red">&times; near-miss</span></div>
+                          <div class="inv__row inv__row--n"><span>N18.2</span><span>Chronic kidney disease, stage 2 (mild)</span><span></span></div>
+                          <div class="inv__row inv__row--n"><span>N18.9</span><span>Chronic kidney disease, unspecified</span><span class="inv__mark k-green"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>emitted</span></div>
+                          <div class="inv__row inv__row--n"><span>N39.0</span><span>Urinary tract infection, site not specified</span><span></span></div>
+                          <div class="inv__row inv__more"><span><svg class="inv__vdots" viewBox="0 0 4 14" aria-hidden="true"><circle cx="2" cy="2" r="1.2"/><circle cx="2" cy="7" r="1.2"/><circle cx="2" cy="12" r="1.2"/></svg></span><span>(5,644 more lines)</span><span></span></div>
+                        </div>
+                        <p class="region" data-link-to><span><b>the region of the letter N</b><br>every inventory line whose code starts with N (5 of the 7 lines shown)</span></p>
+                      </div>
+                    </div>
+                    <!-- (b) the reasoning trace -->
+                    <div class="mfig__panel" id="mfull-trace" data-panel="trace" role="group" aria-label="Reasoning trace">
+                      <p class="mfig__head"><b>Reasoning trace</b> <span>the teacher&rsquo;s thinking, written token by token</span></p>
+                      <div class="trace" data-trace>
+                        <p class="trace__loop"><span>near-miss named earlier: <code>N18.9</code> diverges from <code>N18.1</code> at its last character</span></p>
+                        <svg class="trace__arrow" aria-hidden="true" focusable="false"><path d=""/><path class="head" d=""/></svg>
+                        <span class="tok tok--prose"><span class="tok__chip"><span aria-hidden="true">&middot;&middot;&middot;</span><span class="visually-hidden">(prose)</span></span></span>
+                        <span class="tok tok--near" data-tok="near"><span class="tok__chip">N18.1</span></span>
+                        <span class="tok tok--prose"><span class="tok__chip"><span aria-hidden="true">&middot;&middot;&middot;</span><span class="visually-hidden">(prose)</span></span></span>
+                        <span class="tok tok--null"><span class="tok__chip">the</span></span>
+                        <span class="tok tok--prose"><span class="tok__chip"><span aria-hidden="true">&middot;&middot;&middot;</span><span class="visually-hidden">(prose)</span></span></span>
+                        <span class="tok tok--prose"><span class="tok__chip"><span aria-hidden="true">&middot;&middot;&middot;</span><span class="visually-hidden">(prose)</span></span></span>
+                        <span class="tok tok--locus"><span class="tok__chip">kidney</span></span>
+                        <span class="tok"><span class="tok__chip">disease,</span></span>
+                        <span class="tok"><span class="tok__chip">unspecified</span></span>
+                        <span class="tokgroup">
+                          <span class="tok tok--p1" data-link-from><span class="tok__tag k-p1">P1</span><span class="tok__chip"><span class="vspace" aria-hidden="true"></span><span class="visually-hidden">space </span>N</span></span>
+                          <span class="tok tok--p2"><span class="tok__tag k-p2">P2</span><span class="tok__chip">1</span></span>
+                          <span class="tok tok--p2"><span class="tok__tag k-p2">P2</span><span class="tok__chip">8</span></span>
+                          <span class="tok tok--dot"><span class="tok__chip">.</span></span>
+                          <span class="tok tok--p2c" data-tok="last"><span class="tok__tag k-p2c">P2C</span><span class="tok__chip">9</span></span>
+                        </span>
+                        <div class="notes">
+                          <p class="note note--null k-null"><span class="note__ref" aria-hidden="true">the</span><span><span class="visually-hidden">At &ldquo;the&rdquo;: </span>NULL event: prose position, random target (calibration)</span></p>
+                          <p class="note note--locus k-gold"><span class="note__ref" aria-hidden="true">kidney</span><span><span class="visually-hidden">At &ldquo;kidney&rdquo;: </span>locus: the forced chapter margin stays &ge;2 nats from here</span></p>
+                          <p class="note note--ph1 k-p1"><svg class="brace" viewBox="0 0 40 10" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M1 0Q1 5 7 5H14Q20 5 20 10Q20 5 26 5H33Q39 5 39 0"/></svg><span class="note__ref" aria-hidden="true">N</span><span><span class="visually-hidden">At N: </span>Phase 1: which region</span></p>
+                          <p class="note note--ph2 k-p2"><svg class="brace" viewBox="0 0 150 10" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M1 0Q1 5 8 5H68Q75 5 75 10Q75 5 82 5H142Q149 5 149 0"/></svg><span class="note__ref" aria-hidden="true">18.9</span><span><span class="visually-hidden">At 18.9: </span>Phase 2: which code in it</span></p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- (c) the events, as a legend -->
+                    <div class="mfig__panel mfig__panel--half" id="mfull-events" data-panel="events" role="group" aria-label="Decision events">
+                      <p class="mfig__head"><b>Decision events</b> <span>one token each</span></p>
+                      <ul class="events" role="list">
+                        <li><span class="tok tok--p1"><span class="tok__chip">P1</span></span><span>the chapter letter at a code&rsquo;s first mention: <i>which region</i> (Phase 1)</span></li>
+                        <li><span class="tok tok--p2"><span class="tok__chip">P2</span></span><span>each later character: <i>which code within the region</i> (Phase 2; the separator &ldquo;.&rdquo; is not scored)</span></li>
+                        <li><span class="tok tok--p2c"><span class="tok__chip">P2C</span></span><span>the character where the code diverges from its near-miss (Phase 2, contrastive)</span></li>
+                        <li><span class="tok tok--null"><span class="tok__chip">NULL</span></span><span>a prose position with a random letter as target: nothing is decided (calibration)</span></li>
+                      </ul>
+                    </div>
+                    <!-- (d) one decision, as a margin -->
+                    <div class="mfig__panel mfig__panel--half" id="mfull-decision" data-panel="decision" role="group" aria-label="One decision: the P2C event">
+                      <p class="mfig__head mfig__head--stack"><b>One decision: the P2C event</b> <span>next-token logits at the position <i>q</i> that emits <code>9</code></span></p>
+                      <div class="logits" role="img" aria-label="Bar chart of next-token logits: 9 is the target and has the longest bar, 1 is the near-miss with the second longest, and 2, 3 and 0 are shorter. The margin is the gap between the bars of 9 and 1.">
+                        <span class="logits__margin" aria-hidden="true"><span>margin</span></span>
+                        <div class="logit" style="--v:3.35"><code>9</code><i class="logit__bar logit__bar--target"></i><b class="k-green">target<svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></b></div>
+                        <div class="logit" style="--v:2.40"><code>1</code><i class="logit__bar logit__bar--near"></i><b class="k-red">near-miss &times;</b></div>
+                        <div class="logit" style="--v:1.40"><code>2</code><i class="logit__bar"></i></div>
+                        <div class="logit" style="--v:1.10"><code>3</code><i class="logit__bar"></i><span class="k-null">others: not competitors at P2C</span></div>
+                        <div class="logit" style="--v:.80"><code>0</code><i class="logit__bar"></i></div>
+                      </div>
+                      <p class="logits__def">margin(<i>q</i>) = logit(<code>9</code>) &minus; logit(<code>1</code>): at P2C the one competitor is the near-miss&rsquo;s character (at P1 and P2, the logsumexp of all competitors)</p>
+                      <p class="logits__def"><i>I<sub>h</sub></i>(<i>q</i>): margin removed by mean-ablating <i>h</i> at <i>q</i></p>
+                    </div>
+                    <!-- (e) testing a set of heads: necessity and knock-in -->
+                    <div class="mfig__panel" id="mfull-test" data-panel="test" role="group" aria-label="Testing a set of heads">
+                      <p class="mfig__head"><b>Testing a set of heads</b> <span>remove it (necessity), or copy it into another patient&rsquo;s note (knock-in)</span></p>
+                      <div class="test">
+                        <div class="test__notes">
+                          <p class="test__who test__who--a"><b>note A</b> clean run</p>
+                          <span class="test__lab test__lab--q">the input token at <i>q</i></span>
+                          <span class="test__lab test__lab--out k-p1">writes <code>N</code></span>
+                          <span class="tok tok--prose test__c1"><span class="tok__chip"><span aria-hidden="true">&middot;&middot;&middot;</span><span class="visually-hidden">(prose)</span></span></span>
+                          <span class="tok test__c2"><span class="tok__chip">disease,</span></span>
+                          <span class="tok tok--q test__c3"><span class="tok__chip">unspecified</span></span>
+                          <svg class="test__to test__c4" viewBox="0 0 16 10" aria-hidden="true" focusable="false"><path d="M0 5h11"/><path class="head" d="M16 5l-6-3.500v7z"/></svg>
+                          <span class="tok tok--p1 test__c5"><span class="tok__chip"><span class="vspace" aria-hidden="true"></span><span class="visually-hidden">space </span>N</span></span>
+                          <p class="test__who test__who--b"><b>note B</b> another patient</p>
+                          <span class="test__put-arrow" aria-hidden="true"></span>
+                          <span class="test__lab test__put">put in the clean token</span>
+                          <span class="tok tok--prose test__c1 test__b"><span class="tok__chip"><span aria-hidden="true">&middot;&middot;&middot;</span><span class="visually-hidden">(prose)</span></span></span>
+                          <span class="tok tok--prose test__c2 test__b"><span class="tok__chip"><span aria-hidden="true">&middot;&middot;&middot;</span><span class="visually-hidden">(prose)</span></span></span>
+                          <span class="tok tok--q tok--qb test__c3 test__b"><span class="tok__chip"><span aria-hidden="true">&middot;&middot;&middot;</span><span class="visually-hidden">(the clean token)</span></span></span>
+                          <svg class="test__to test__c4 test__b" viewBox="0 0 16 10" aria-hidden="true" focusable="false"><path d="M0 5h11"/><path class="head" d="M16 5l-6-3.500v7z"/></svg>
+                          <span class="tok tok--k test__c5 test__b"><span class="tok__chip"><span class="vspace" aria-hidden="true"></span><span class="visually-hidden">space </span>K</span></span>
+                          <span class="test__lab test__same">an event of the same kind, where the model</span>
+                          <span class="test__lab test__wrote k-red">wrote <code>K</code></span>
+                        </div>
+                        <div class="test__heads">
+                          <p class="test__lab">heads at <i>q</i></p>
+                          <p class="test__copy k-p1"><b>copy in</b> the set&rsquo;s clean outputs</p>
+                          <svg class="heads" viewBox="0 0 102 150" aria-hidden="true" focusable="false">
+                            <defs><pattern id="heads-grid" width="15" height="15" patternUnits="userSpaceOnUse"><rect class="h-cell" width="12" height="12"/></pattern></defs>
+                            <rect width="102" height="27" fill="url(#heads-grid)"/>
+                            <rect y="120" width="102" height="27" fill="url(#heads-grid)"/>
+                            <g class="h-set"><rect x="15" y="0" width="12" height="12"/><rect x="45" y="15" width="12" height="12"/><rect x="75" y="0" width="12" height="12"/></g>
+                            <g class="h-into"><rect x="15" y="120" width="12" height="12"/><rect x="45" y="135" width="12" height="12"/><rect x="75" y="120" width="12" height="12"/></g>
+                            <g class="h-arrow"><path d="M21 15V111M51 30V126M81 15V111"/><path class="head" d="M21 118l-4-8h8zM51 133l-4-8h8zM81 118l-4-8h8z"/></g>
+                          </svg>
+                          <p class="test__lab test__read">then read the margin of <code><span class="vspace" aria-hidden="true"></span>N</code></p>
+                        </div>
+                        <div class="test__bars">
+                          <p><b>necessity</b> <span class="k-null">note A, set mean-ablated</span></p>
+                          <div class="bar bar--nec" style="--v:.62" role="img" aria-label="Bar: 0.62 of the clean margin is lost"><i></i></div>
+                          <p>the clean margin; <b class="k-red">0.62 of it is lost</b></p>
+                          <p class="test__gap"><b>recovery</b> <span class="k-null">note B, set copied in</span></p>
+                          <div class="bar bar--rec" style="--v:.67" role="img" aria-label="Bar: recovery 0.67 on a scale from 0 to 1"><i></i></div>
+                          <p class="bar__scale" aria-hidden="true"><span>0</span><b class="k-p1" style="--v:.67">0.67</b><span>1</span></p>
+                          <p class="k-null">0: note B as it is. 1: all 1,600 heads copied in (the clean margin returns).</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fig__tools">
+                  <a class="action" href="https://arxiv.org/pdf/2606.06840#page=23" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>In the paper, p.&nbsp;23<span class="visually-hidden"> of MISTILL (opens in a new tab)</span></a>
+                </div>
+                <figcaption class="fig__caption"><b>Figure 2 of the paper (Appendix C), the full version of Figure 1.</b> How a coding decision becomes a token-level event (illustrative: public ICD-10-CM codes and their inventory descriptions; the note and the reasoning prose are placeholders). The prompt holds the note and all 5,651 inventory lines; the region of a chapter letter is every line whose code starts with it. Writing <code>N18.9</code> after naming <code>N18.1</code>, the teacher decides one token at a time: the chapter letter (P1, Phase 1), each later character but the separator (P2, Phase 2), and the character at which the code diverges from its near-miss (P2C). NULL events, prose positions with a random target letter, calibrate the head rankings. Each event is scored by the model&rsquo;s own margin against its competitors (at P2C, the near-miss&rsquo;s character alone) at the position <i>q</i> that emits the token; a head&rsquo;s importance is the margin it removes when mean-ablated there (Sec.&nbsp;2.3). The locus (Appendix&nbsp;F) is the earliest position from which the forced chapter margin stays at least 2 nats. <i>Bottom:</i> testing a set of heads. For necessity the set&rsquo;s outputs at <i>q</i> are replaced by their means over the note. For the knock-in we take an event of the same kind in another patient&rsquo;s note, where the model wrote a different token, put in the clean note&rsquo;s token at <i>q</i> and the set&rsquo;s outputs from the clean run, and read the margin of the clean decision. The two bars show the chapter top-8 (Table&nbsp;1).</figcaption>
+              </figure>
+            </div>
+            <div class="pub__block" id="mistill-abstract">
+              <h4>Abstract</h4>
+              <p>Reasoning-trained language models can pick a document&rsquo;s few labels from thousands of candidates, zero-shot. We ask which components make these choices, and whether a student can be taught where to look as well as what to write, so its decisions trace to a few components and what they read. We study clinical coding of <span class="nowrap">MIMIC-IV</span> discharge summaries with all 5,651 candidate codes in the prompt. Each choice is one token: a region of the code list, a code within it, or the departure from a similar code named earlier. We measure each attention head&rsquo;s causal effect there by removing it and transplanting it into another summary. On essentially every summary, a small, shared set of heads, partly specific to each kind of choice, is necessary and sufficient; blocking what the tested heads read removes their effect. MISTILL builds on this: besides the teacher&rsquo;s text, it supervises where the student attends at the teacher&rsquo;s decision tokens. In a cross-family student, its own heads, found after training, restore nearly twice as much of the choice between similar codes as before, where chain-of-thought distillation alone adds under a third; one that already carried most of it gains a little, consistently across seeds, and both gains hold on the students&rsquo; own completed traces. On two corpora with coder-marked evidence, a MISTILL student&rsquo;s decision heads attend to it more, and more specifically, than a chain-of-thought-distilled student&rsquo;s. Controls locate the gain in supervising attention at the decision tokens; in the cross-family student, a target built from unselected teacher heads loses it. No task difference from chain-of-thought distillation is detected at matched precision. The structure recurs in a second reasoner; ranked heads beat random ones on legal-document labelling and code generation; and without retraining the students keep their gain on Spanish case reports and a QA benchmark.</p>
+            </div>
+            <div class="pub__block bibtex" id="mistill-bibtex">
+              <h4>BibTeX</h4>
+              <pre tabindex="0" role="region" aria-label="BibTeX for MISTILL"><code>@misc{saharoy2026characterize,
+  title         = {Characterize Then Distill: Mechanistic Reasoning in Large Output Spaces},
+  author        = {Saha Roy, Debjyoti},
+  year          = {2026},
+  eprint        = {2606.06840},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2606.06840}
+}</code></pre>
+              <p class="bibtex__bar">
+                <button class="btn btn--small" type="button" data-copy data-requires-js><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span data-copy-label>Copy BibTeX</span><span class="visually-hidden"> for MISTILL</span></button>
+                <span class="status" role="status" aria-live="polite"></span>
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <script src="assets/js/publications.js"></script>
-    <script>
-        loadPublications('publications-container');
-    </script>
+    <!-- ================================================================ NEXT -->
+    <section class="section" aria-labelledby="next-title">
+      <div class="wrap section__grid">
+        <header class="section__head">
+          <p class="section__num" aria-hidden="true">04</p>
+          <h2 class="section__title" id="next-title">More</h2>
+        </header>
+        <div class="section__body" data-reveal>
+          <p class="display">News, the NeurIPS talk and how to reach me are on the home page.</p>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="./#talks">Watch the talk <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+            <a class="btn" href="./#news">News</a>
+            <a class="btn" href="./#contact">Get in touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <!-- ===== Footer (duplicated on every page) ===== -->
+  <footer class="site-footer">
+    <div class="wrap site-footer__grid">
+      <div>
+        <p class="site-footer__name">Debjyoti Saha Roy <span class="visually-hidden">My name in Bengali: </span><span lang="bn">দেবজ্যোতি সাহা রায়</span></p>
+        <ul class="site-footer__links" role="list">
+          <li><a href="https://github.com/deb-official" target="_blank" rel="noopener me">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+          <li><a href="https://scholar.google.com/citations?user=EVdVapAAAAAJ" target="_blank" rel="noopener me">Google Scholar<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+          <li><a href="https://www.linkedin.com/in/debjyotisaharoy" target="_blank" rel="noopener me">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+          <li><a href="https://x.com/debjyotisaharoy" target="_blank" rel="noopener me">X<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+          <li><a href="./#contact">Email</a></li>
+        </ul>
+        <p class="site-footer__colophon">Set in Fraunces, Inter, JetBrains Mono and Tiro Bangla, with figure maths from the KaTeX fonts. Hand-written HTML, CSS and JavaScript. No trackers, no cookies.</p>
+      </div>
+      <p class="site-footer__meta">
+        <span>&copy; 2026 Debjyoti Saha Roy</span>
+        <span>Last updated <time datetime="2026-11">Nov 2026</time></span>
+        <a href="#top">Back to top</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- figures.js comes last: it is deferred anyway, and placed here it does not compete with this page's
+       HTML and CSS for a slow connection (site.js, in the <head>, still runs first). -->
+  <script type="module" src="assets/js/figures.js?v=2026-11-25"></script>
 </body>
-
 </html>

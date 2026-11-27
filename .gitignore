@@ -13,3 +13,13 @@ Thumbs.db
 
 # Environment variables (if any later)
 .env
+
+# Claude Code session files (local only)
+.claude/
+
+# Local-only lists
+_tools/*.local.txt
+
+# Python bytecode caches (created when the _tools scripts run)
+__pycache__/
+*.pyc

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /README.md
+Disallow: /assets/fonts/README.md
+
+Sitemap: https://debjyoti.org/sitemap.xml
